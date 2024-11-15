@@ -10,7 +10,7 @@ Założenia gry:
 - Taktyczna rozgrywka
 - Rozgrywka turowa
 - Rozgrywka na siatce (kafelki)
-- Założenie "odwróconbego Tetrisa" - hordy wrogów nadciągają z góry mapy, a my czyścimy je zaklęciami obszarowymi o konkretnych kształtach 
+- Założenie "odwróconego Tetrisa" - hordy wrogów nadciągają z góry mapy, a my czyścimy je zaklęciami obszarowymi o konkretnych kształtach 
 - Rozgrywka ma elementy "Tower-Defence" 
 - Wcielamy się w ekscentrycznego czarodzieja którego wieża znalazła się na drodze armii ciemności.
 
