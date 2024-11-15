@@ -7,12 +7,12 @@ Dokumentacja na Miro:
 https://miro.com/welcomeonboard/amJJaU5CVlpBT2l1YUpwc01XZzlIdFl3dmVMUnQ3S0l1ZjhlalBGYlRjbndPc3dORUNROC9OVDVyakJSdzd3ak1vY2xsRGdqRDVHb29SbWtuYVJuMzl0Ujk1M2NyalpxRUVGUTJJTDJEMGVkY0ZvSFIySkR4aWd1b0lPczBIRmUhZQ==?share_link_id=630813919850
 
 Założenia gry:
--Taktyczna rozgrywka
--Rozgrywka turowa
--Rozgrywka na siatce (kafelki)
--Założenie "odwróconbego Tetrisa" - hordy wrogów nadciągają z góry mapy, a my czyścimy je zaklęciami obszarowymi o konkretnych kształtach 
--Rozgrywka ma elementy "Tower-Defence" 
--Wcielamy się w ekscentrycznego czarodzieja którego wieża znalazła się na drodze armii ciemności.
+- Taktyczna rozgrywka
+- Rozgrywka turowa
+- Rozgrywka na siatce (kafelki)
+- Założenie "odwróconbego Tetrisa" - hordy wrogów nadciągają z góry mapy, a my czyścimy je zaklęciami obszarowymi o konkretnych kształtach 
+- Rozgrywka ma elementy "Tower-Defence" 
+- Wcielamy się w ekscentrycznego czarodzieja którego wieża znalazła się na drodze armii ciemności.
 
 Gameplay:
 1) Tura Wrogów - wrogowie pojawiają się u góry ekranu, idą w dół ekranu lub jeśli znaleźli się u samego dołu ekranu, 
