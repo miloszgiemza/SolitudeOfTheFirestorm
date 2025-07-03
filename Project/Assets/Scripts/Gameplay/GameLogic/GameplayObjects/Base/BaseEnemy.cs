@@ -7,7 +7,9 @@ public abstract class BaseEnemy : GameplayObject
     protected LootSpawner lootSpawner;
     protected EnemyTier tier;
 
-    public BaseEnemy(Sprite gameplayImage, int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier) : base(gameplayImage)
+    public BaseEnemy(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL,
+        int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier) 
+        : base(gameplayImage, descriptionEN, descriptionPL)
     {
         attributes.Add(AttributeID.Health, new AttributeHealth(attributeHealthValue, attributeHealthValue));
         attributes.Add(AttributeID.MovementSpeed, new AttributeMovementSpeed(attributeMovementSpeedValue, attributeMovementSpeedValue, 1));
@@ -21,9 +23,15 @@ public abstract class BaseEnemy : GameplayObject
 
     protected abstract void PerformInteractionsWithOtherObjectsOnTileOnEnteringTile(Tile tile);
 
+    public override int ReturnReceivedDamage(int spellDamage, int modifierDamage)
+    {
+        return Mathf.Clamp((spellDamage + modifierDamage) - attributes[AttributeID.Defence].CurrentValue, 0, int.MaxValue);
+    }
+
     public override void ReactToSpell(BaseSpell spell, int spellDamage, int modifierDamage, int modifierEffectLength)
     {
-        int damageReceivedMinusDefence = Mathf.Clamp( (spellDamage + modifierDamage) - attributes[AttributeID.Defence].CurrentValue, 0, int.MaxValue);
+        int damageReceivedMinusDefence = ReturnReceivedDamage(spellDamage, modifierDamage);
+        //int damageReceivedMinusDefence = Mathf.Clamp( (spellDamage + modifierDamage) - attributes[AttributeID.Defence].CurrentValue, 0, int.MaxValue);
         attributes[AttributeID.Health].SubstractFromCurrentAttributeValue(damageReceivedMinusDefence);
         
         AcquireStatusesFromPlayer(spell.Statuses, modifierEffectLength);

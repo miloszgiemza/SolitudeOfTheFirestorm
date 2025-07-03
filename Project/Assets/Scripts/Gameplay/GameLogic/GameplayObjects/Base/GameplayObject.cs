@@ -15,7 +15,7 @@ public enum GameplayObjectType
 }
 
 [Serializable]
-public abstract class GameplayObject : IComparable
+public abstract class GameplayObject : IComparable, IReturnObjectDataForTooltip
 {
     public abstract GameplayObjectType GameplayObjectType {get;}
 
@@ -35,17 +35,28 @@ public abstract class GameplayObject : IComparable
 
     protected MapPosition[] movementDirections = { new MapPosition(0, -1) };
 
+    protected TooltipParagraph[] descriptionEN;
+    protected TooltipParagraph[] descriptionPL;
+
+    public GameplayObject(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL)
+    {
+        this.gameplayImage = gameplayImage;
+
+        this.descriptionEN = descriptionEN;
+        this.descriptionPL = descriptionPL;
+    }
+
     public abstract void ReactToSpell(BaseSpell spell, int spellDamage, int modifierDamage, int modifierEffectLength);
     public abstract void PerformEnemyTurnAction();
+    public abstract void PerformEnemyTurnAction(int enemyMaxSpeed);
     public abstract void PerformActionAtEndOfPlayerTurn();
     public abstract void PerformActionAtStartOfPlayerTurn();
     public abstract void ReactToAura(List<Status> statuses);
 
-    public GameplayObject(Sprite gameplayImage)
+    public virtual int ReturnReceivedDamage(int spellDamage, int modifierDamage)
     {
-        this.gameplayImage = gameplayImage;
+        return 0;
     }
-
 
     public void SetValues(Tile tile)
     {
@@ -94,5 +105,23 @@ public abstract class GameplayObject : IComparable
         else if (tile.Position.Y == arg.tile.Position.Y)
             return 0;
         else return 1;
+    }
+
+    public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    {
+        TooltipParagraph[] description = new TooltipParagraph[0];
+
+        switch (gameLanguage)
+        {
+            case GameLanguage.ENG:
+                description = descriptionEN;
+                break;
+
+            case GameLanguage.PL:
+                description = descriptionPL;
+                break;
+        }
+
+        return description;
     }
 }

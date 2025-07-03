@@ -59,7 +59,7 @@ public class StateIdle : BasePlayerState
         if(player.SecendaryActionsAvaliable > 0)
         {
             player.SpendSecendaryAction();
-            PlayerInventoryController.Instance.ReceiveItemAndTryToAcquireIt(newItem);
+            PlayerInventoryController.Instance.PlayerInventory.ReceiveItemAndTryToAcquireIt(newItem);
         }
     }
 

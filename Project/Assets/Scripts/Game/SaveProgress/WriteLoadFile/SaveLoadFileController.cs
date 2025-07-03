@@ -5,18 +5,18 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveLoadController
+public static class SaveLoadFileController
 {
     private static string saveFilePath = Application.persistentDataPath + "SaveGame.gd";
 
     public static void SaveGame(PlayerProgression playerProgression)
     {
-        PlayerProgression newSave = new PlayerProgression(playerProgression.UnlockedSpells, playerProgression.PlayerInventoryState, playerProgression.UnlockedLevelsNumber);
+        //PlayerProgression newSave = new PlayerProgression(playerProgression.UnlockedLevelsNumber, playerProgression.UnlockedSpells, playerProgression.EquipedSpells, playerProgression.PlayerInventoryState);
         
         FileStream saveFile = File.Create(saveFilePath);
 
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        binaryFormatter.Serialize(saveFile, newSave);
+        binaryFormatter.Serialize(saveFile, playerProgression);
 
         saveFile.Close();
     }

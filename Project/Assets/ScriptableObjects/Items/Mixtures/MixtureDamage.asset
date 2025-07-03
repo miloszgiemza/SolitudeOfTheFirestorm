@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: MixtureDamage
   m_EditorClassIdentifier: 
   iDGameDatabase: 66eb18dd-cc70-47a9-945a-4de5685ba7bd
+  descriptionEN:
+  - title: Mxture of Damege
+    text: +5 damage to spells
+  descriptionPL:
+  - title: "Mikstura Obra\u017Ce\u0144"
+    text: "+5 obra\u017Ce\u0144 od zakl\u0119\u0107"
   icon: {fileID: 21300000, guid: c38935c7ebed60b4d90cb76400ba7d10, type: 3}
   iconCollectable: {fileID: 21300000, guid: c38935c7ebed60b4d90cb76400ba7d10, type: 3}
   statuses:

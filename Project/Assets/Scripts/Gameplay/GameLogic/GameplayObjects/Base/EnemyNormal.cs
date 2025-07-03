@@ -6,7 +6,9 @@ public abstract class EnemyNormal : BaseEnemy
 {
     public override GameplayObjectType GameplayObjectType => GameplayObjectType.Enemy; 
 
-    public EnemyNormal(Sprite gameplayImage, int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier) : base(gameplayImage, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier) 
+    public EnemyNormal(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL,
+        int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier) : 
+        base(gameplayImage, descriptionEN, descriptionPL, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier) 
     {
     }
 
@@ -31,6 +33,11 @@ public abstract class EnemyNormal : BaseEnemy
         {
             MoveAndCheckIfRemove(Map.Instance.MapData);
         } 
+    }
+
+    public override void PerformEnemyTurnAction(int enemyForcedSpeed)
+    {
+            MoveAndCheckIfRemove(Map.Instance.MapData, enemyForcedSpeed);
     }
 
     #region Movement
@@ -80,6 +87,36 @@ public abstract class EnemyNormal : BaseEnemy
                 }
             }
         }
+    }
+
+    protected virtual void MoveAndCheckIfRemove(Tile[,] mapData, int enemyForcedSpeed)
+    {
+            for (int i = 0; i < enemyForcedSpeed; i++)
+            {
+                bool movementPerformed = false;
+
+                for (int d = 0; d < movementDirections.Length && !movementPerformed; d++)
+                {
+                    if ((Arrays2DExtensions.CheckIfPositionIsWithinBoundsOfArray<Tile>(tile.Position.X + movementDirections[d].X, tile.Position.Y + movementDirections[d].Y, mapData))
+                        && mapData[tile.Position.X + movementDirections[d].X, tile.Position.Y + movementDirections[d].Y].CheckIfPossibleToMoveOn(this))
+                    {
+                        tile.Clear(this);
+                        mapData[tile.Position.X + movementDirections[d].X, tile.Position.Y + movementDirections[d].Y].UpdateTile(this);
+                        tile = mapData[tile.Position.X + movementDirections[d].X, tile.Position.Y + movementDirections[d].Y];
+
+                        PerformInteractionsWithOtherObjectsOnTileOnEnteringTile(tile);
+
+                        movementPerformed = true;
+                    }
+                    else if (CheckIfReachedPlayer(tile.Position.X + movementDirections[d].X, tile.Position.Y + movementDirections[d].Y, mapData))
+                    {
+                        DealDamageToPlayer();
+                        attributes[AttributeID.Health].SetCurrentAttributeValue(0);
+                        //tile.Clear(this);
+                        removeFromGame = true;
+                    }
+                }
+            }
     }
     #endregion
 }

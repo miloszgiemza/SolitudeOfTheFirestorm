@@ -45,7 +45,7 @@ namespace LevelChoiceScene
         {
             //yield return new WaitUntil(() => InputControllerGameplay.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainAction.WasReleasedThisFrame());
             yield return new WaitForSeconds(0f);
-            GameController.Instance.LoadCurrenLevelPreset(LevelsPresetsController.Instance.ReturnUnlockedLevelPreset(buttonNumber));
+            GameController.Instance.LoadCurrenLevelPreset(LevelsPresetsController.Instance.ReturnLevelPreset(buttonNumber));
             SelectedLevelWindowController.Instance.ShowSelectedLevelWindow(GameController.Instance.CurrenLevelPresetToLoad.AvaliableEnemiesTypes, GameController.Instance.CurrenLevelPresetToLoad.CountOfEnemiesOfTier);
             //buttonMethod.Invoke(buttonNumber);
         }

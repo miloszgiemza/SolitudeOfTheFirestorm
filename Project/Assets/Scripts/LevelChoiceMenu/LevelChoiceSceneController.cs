@@ -8,7 +8,7 @@ namespace LevelChoiceScene
     {
         public void LoadLevelAndStartGameplay(int levelPresetNumber)
         {
-            GameController.Instance.LoadCurrenLevelPreset(LevelsPresetsController.Instance.ReturnUnlockedLevelPreset(levelPresetNumber));
+            GameController.Instance.LoadCurrenLevelPreset(LevelsPresetsController.Instance.ReturnLevelPreset(levelPresetNumber));
             GameController.Instance.LoadGameplayScene();
         }
     }

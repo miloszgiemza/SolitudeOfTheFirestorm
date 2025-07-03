@@ -49,6 +49,21 @@ public class EnemiesController : MonoBehaviour
         EnemiesController.Instance.ClearDeadEnemies();
     }
 
+    public void RunEnemies(GameplayController game, int enemiesForcedSpeed)
+    {
+        enemiesOnMap.Sort();
+
+        for (int currentEnemy = 0; currentEnemy < enemiesOnMap.Count; currentEnemy++)
+        {
+            //Debug.Log("Current enemy position: X" + enemiesOnMap[currentEnemy].Tile.Position.X + " Y" + enemiesOnMap[currentEnemy].Tile.Position.Y);
+            enemiesOnMap[currentEnemy].ApplyStatuses();
+
+            enemiesOnMap[currentEnemy].PerformEnemyTurnAction(enemiesForcedSpeed);
+        }
+
+        EnemiesController.Instance.ClearDeadEnemies();
+    }
+
     public void RunEnemiesActionAtEndOfPlayerTurn()
     {
         EnemiesController.Instance.ClearDeadEnemies();

@@ -23,7 +23,7 @@ namespace LevelChoiceScene
 
         private void Start()
         {
-            CreateButtons(LevelsPresetsController.Instance.UnlockedLevels.Length);
+            CreateButtons(PlayerPersistentDataLoadedAndUnpackedController.Instance.PlayerPersistentData.UnlockedLevels);
         }
 
         private void CreateButtons(int unlockedLevelsNumber)

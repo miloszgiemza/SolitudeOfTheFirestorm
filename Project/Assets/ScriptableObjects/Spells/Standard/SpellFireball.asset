@@ -13,16 +13,25 @@ MonoBehaviour:
   m_Name: SpellFireball
   m_EditorClassIdentifier: 
   iDGameDatabase: 8ddb4705-2bfa-42bb-ae81-81966ae6086b
+  descriptionEN:
+  - title: Test
+    text: Test
+  descriptionPL:
+  - title: Test
+    text: Test
   spellName: Fireball
   spellIcon: {fileID: 21300000, guid: 18e64bd830c133744955f73f87315b32, type: 3}
   spellVFX: 0
   damage: 1
-  statuses: []
+  statuses:
+  - attribute: 0
+    duration: 1
+    modifier: 0
   areaOfEffect:
   - position:
       x: 0
       y: 0
-    damage: 2
+    damage: 1
   - position:
       x: 1
       y: 0

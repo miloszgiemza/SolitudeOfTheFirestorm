@@ -42,6 +42,8 @@ public abstract class BaseEnemiesStatsUIDispalayController : MonoBehaviour
                 enemyAtributesDisplayers[x, y] = Instantiate(enemyStatsDisplayerPrefab, 
                     new Vector3(GameWorldToMapCastController.Instance.CastMapPosToGameWorld(x, y).x, GameWorldToMapCastController.Instance.CastMapPosToGameWorld(x, y).y, this.transform.position.z), 
                     Quaternion.identity, this.transform).GetComponent<EnemyAtributesDisplayer>();
+
+                
             }
         }
     }

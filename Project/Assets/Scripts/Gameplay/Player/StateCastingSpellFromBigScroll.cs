@@ -18,7 +18,7 @@ public class StateCastingSpellFromBigScroll : BasePlayerState
     {
         if (InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.EndTurnOrCancelAction.WasReleasedThisFrame())
         {
-            PlayerInventoryController.Instance.DeselectItemAndNullCurrentItemOnUnsuccesfullUse();
+            PlayerInventoryController.Instance.PlayerInventory.DeselectItemAndNullCurrentItemOnUnsuccesfullUse();
             EndCasting();
         }
         else if (InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainAction.WasReleasedThisFrame())
@@ -45,14 +45,14 @@ public class StateCastingSpellFromBigScroll : BasePlayerState
         if (SpellsController.Instance.CurrentSpell.TryCast(Map.Instance.MapData, InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(), 
             modifierDamage, modifierRange, modifierEffectLength))
         {
-            PlayerInventoryController.Instance.DestroyItemAndNullCurrentItemOnSuccesfullUse();
+            PlayerInventoryController.Instance.PlayerInventory.DestroyItemAndNullCurrentItemOnSuccesfullUse();
 
             WrapUpAfterSuccesfullSpell(Map.Instance.MapData, InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(),
                 SpellsController.Instance.CurrentSpell, modifierRange);
         }
         else
         {
-            PlayerInventoryController.Instance.DeselectItemAndNullCurrentItemOnUnsuccesfullUse();
+            PlayerInventoryController.Instance.PlayerInventory.DeselectItemAndNullCurrentItemOnUnsuccesfullUse();
 
             EndCasting();
         }

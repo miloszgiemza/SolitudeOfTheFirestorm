@@ -18,8 +18,9 @@ public class Obstacle : GameplayObject
     protected float movementCostHeuristic = 0f;
     protected List<Status> statuses = new List<Status>();
 
-    public Obstacle(Sprite gameplayImage, bool walkable, int attributeDamageValue, int duration, List<Status> statuses, Tile tile, float movementCostReal, float movementCostHeuristic) : 
-        base(gameplayImage) 
+    public Obstacle(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL,
+        bool walkable, int attributeDamageValue, int duration, List<Status> statuses, Tile tile, float movementCostReal, float movementCostHeuristic) : 
+        base(gameplayImage, descriptionEN, descriptionPL) 
     {
         attributes.Add(AttributeID.Damage, new AttributeDamage(attributeDamageValue, attributeDamageValue));
         this.duration = duration;
@@ -56,5 +57,10 @@ public class Obstacle : GameplayObject
 
     public override void PerformActionAtEndOfPlayerTurn()
     {
+    }
+
+    public override void PerformEnemyTurnAction(int enemyMaxSpeed)
+    {
+        throw new System.NotImplementedException();
     }
 }

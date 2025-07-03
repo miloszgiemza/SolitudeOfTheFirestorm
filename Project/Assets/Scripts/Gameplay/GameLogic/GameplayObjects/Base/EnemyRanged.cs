@@ -9,7 +9,9 @@ public class EnemyRanged : EnemyNormal
 
     public override GameplayObjectType GameplayObjectType => GameplayObjectType.EnemyRanged;
 
-    public EnemyRanged(Sprite gameplayImage, int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier, int range) : base(gameplayImage, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier)
+    public EnemyRanged(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL,
+        int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier, int range) 
+        : base(gameplayImage, descriptionEN, descriptionPL, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier)
     {
         this.range = range;
     }
@@ -49,6 +51,11 @@ public class EnemyRanged : EnemyNormal
         {
             DealDamageToPlayer();
         }
+    }
+
+    public override void PerformEnemyTurnAction(int enemyMaxSpeed)
+    {
+        throw new NotImplementedException();
     }
 
     public static explicit operator EnemyRanged(EnemyData v)

@@ -13,6 +13,8 @@ public enum ItemType
 
 public abstract class BaseItem : BaseGameDatabaseItem
 {
+    public override DatabaseItemType DatabaseItemType => DatabaseItemType.Item;
+
     public abstract ItemType ItemType { get; }
 
     public Sprite Icon => icon;

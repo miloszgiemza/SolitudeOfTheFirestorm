@@ -268,4 +268,22 @@ public class Tile
 
         EnemiesController.Instance.ClearDeadEnemies();
     }
+
+    public int ReturnObjectReceivedDamage(int spellDamage, int modifierDamage)
+    {
+        int damageReceived = 0;
+
+        if(ReferenceEquals(enemySocket, null))
+        {
+            damageReceived = 0;
+        }
+        else
+        {
+            damageReceived = enemySocket.ReturnReceivedDamage(
+                SpellsController.Instance.CurrentSpell.ReturnDamage(this, Map.Instance.MapData, InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(),
+                Player.Instance.Attributes[AttributeID.PlayerModifierSpellRange].CurrentValue), modifierDamage);
+        }
+
+        return damageReceived;
+    }
 }

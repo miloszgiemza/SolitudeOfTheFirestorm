@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: SpellInferno
   m_EditorClassIdentifier: 
   iDGameDatabase: ed2ef10d-9b80-41e1-ab70-e0fb2590a8e4
+  descriptionEN:
+  - title: Test
+    text: Test
+  descriptionPL:
+  - title: Test
+    text: Test
   spellName: Inferno
   spellIcon: {fileID: 21300000, guid: 746fb93dbdc16a743a23437d8be793c8, type: 3}
   spellVFX: 0

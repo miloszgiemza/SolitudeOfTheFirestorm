@@ -61,6 +61,7 @@ MonoBehaviour:
   atributeSpeed: {fileID: 233172198398507746}
   atributeDamage: {fileID: 1938869210609791688}
   atributeDefence: {fileID: 261499545836485627}
+  potentialDamageReceived: {fileID: 0}
 --- !u!1 &7164226910868110674
 GameObject:
   m_ObjectHideFlags: 0

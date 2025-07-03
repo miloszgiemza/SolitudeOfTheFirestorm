@@ -11,6 +11,7 @@ public class GameplayController : MonoBehaviour
     public enum States
     {
         Idle,
+        LevelIntro,
         Player,
         Enemy,
         Defeat,
@@ -28,6 +29,7 @@ public class GameplayController : MonoBehaviour
     private BaseGameState currentState;
 
     private StateGameIdle stateGameIdle = new StateGameIdle();
+    private StateGameLevelIntro stateGameLevelIntro = new StateGameLevelIntro();
     private StatePlayerTurn statePlayerTurn= new StatePlayerTurn();
     private StateEnemiesTurn stateEnemiesTurn = new StateEnemiesTurn();
     private StateDefeat stateDefeat = new StateDefeat();
@@ -56,6 +58,11 @@ public class GameplayController : MonoBehaviour
         {
             case States.Idle:
                 currentState = stateGameIdle;
+                currentState.StartTurn(this);
+                break;
+
+            case States.LevelIntro:
+                currentState = stateGameLevelIntro;
                 currentState.StartTurn(this);
                 break;
 
@@ -96,6 +103,6 @@ public class GameplayController : MonoBehaviour
     public IEnumerator StartGameWhenEverythingInitialised()
     {
         yield return new WaitUntil(() => LevelLoader.Instance.Initialised);
-        SwitchState(States.Enemy);
+        SwitchState(States.LevelIntro);
     }
 }

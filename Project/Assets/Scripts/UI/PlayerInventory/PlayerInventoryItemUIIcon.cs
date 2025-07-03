@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public class PlayerInventoryItemUIIcon : MonoBehaviour
+public class PlayerInventoryItemUIIcon : MonoBehaviour, IReturnObjectDataForTooltip
 {
     private Image image;
     private Button button;
@@ -57,8 +57,13 @@ public class PlayerInventoryItemUIIcon : MonoBehaviour
     {
         yield return new WaitUntil(() => InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainAction.WasReleasedThisFrame());
 
-        PlayerInventoryController.Instance.TryUseItem(itemType, numberInInventoryCompartment);
+        PlayerInventoryController.Instance.PlayerInventory.TryUseItem(itemType, numberInInventoryCompartment);
 
         PlayerInventoryUIController.Instance.HideWindow();
+    }
+
+    public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    {
+        return PlayerInventoryController.Instance.PlayerInventory.ReturnTooltipText(gameLanguage, itemType, numberInInventoryCompartment);
     }
 }

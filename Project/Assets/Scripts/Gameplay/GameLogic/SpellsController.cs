@@ -49,7 +49,7 @@ public class SpellsController : MonoBehaviour
             instance = this;
         }
 
-        LoadUnlockedSpells(PlayerProgressionController.Instance.PlayerProgression.UnlockedSpells);
+        LoadUnlockedSpells(SavesController.Instance.PlayerProgression.UnlockedSpells);
         
         currentSpell = ListRandomElement<BaseSpell>.ReturnRandomElement(avaliableSpells);
     }
@@ -62,7 +62,7 @@ public class SpellsController : MonoBehaviour
     #region Initialisation
     private void LoadUnlockedSpells(List<string> unlockedSpellsIDs)
     {
-        if(SaveLoadController.CheckIfSaveFileExists())
+        if(SaveLoadFileController.CheckIfSaveFileExists())
         {
             avaliableSpells = new List<BaseSpell>();
 

@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
 
     public int Health => health;
 
-    private bool mainActionSpent;
+    private int mainActionsLimit = 1;
+    private int mainActionsRemaining;
 
     [SerializeField] private int health = 1;
 
@@ -60,8 +61,10 @@ public class Player : MonoBehaviour
         ApplyStatuses();
         SwitchState(PlayerState.ChooseSpellForThisTurn);
         
-        mainActionSpent = false;
+        mainActionsRemaining = 1;
         secendaryActionsAvaliable = secendaryActionsLimit;
+
+        ActionsCounter.Instance.Refresh(mainActionsRemaining.ToString(), secendaryActionsAvaliable.ToString());
     }
 
     public void RunUpdate(GameplayController game)
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour
 
             case PlayerState.Casting:
 
-                if(!mainActionSpent)
+                if(mainActionsRemaining > 0)
                 {
                     currentState.EndState(this);
                     currentState = stateCastingSpell;
@@ -97,7 +100,7 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerState.CastingSpellFromBigScroll:
-                if (!mainActionSpent)
+                if (mainActionsRemaining > 0)
                 {
                     currentState.EndState(this);
                     currentState = stateCastingSpellFromBig;
@@ -136,19 +139,21 @@ public class Player : MonoBehaviour
 
     public void SetSpellToSpentThisTurn()
     {
-        mainActionSpent = true;
+        mainActionsRemaining--;
+        ActionsCounter.Instance.Refresh(mainActionsRemaining.ToString(), secendaryActionsAvaliable.ToString());
         if (!ReferenceEquals(OnSpellSpent, null)) OnSpellSpent.Invoke();
     }
 
     public void SpendSecendaryAction()
     {
         secendaryActionsAvaliable--;
+        ActionsCounter.Instance.Refresh(mainActionsRemaining.ToString(), secendaryActionsAvaliable.ToString());
     }
 
     public void DeactivatePlayerAtEndOfTurn()
     {
         currentState = stateDeactivated;
-        mainActionSpent = true;
+        mainActionsRemaining = mainActionsLimit;
 
         SpellDrawingUIController.Instance.HideWindow();
         NextTurnSpellsDisplayer.Instance.Hide();
@@ -175,6 +180,8 @@ public class Player : MonoBehaviour
         {
             attributes[newStatuses[currentNewStatus].Attribute].AddStatus(new Status(newStatuses[currentNewStatus].Attribute, newStatuses[currentNewStatus].Duration, newStatuses[currentNewStatus].Modifier));
         }
+
+        ApplyStatuses();
     }
 
     protected void ApplyStatuses()

@@ -16,7 +16,7 @@ public class ItemMixture : BaseItem
         if(!ReferenceEquals(PlayerStateIdleEvents.OnTryDrinkMixture, null))
         {
             PlayerStateIdleEvents.OnTryDrinkMixture.Invoke();
-            PlayerStateDrinkMixtureEvents.OnDrinMixture.Invoke(this);
+            if(!ReferenceEquals(PlayerStateDrinkMixtureEvents.OnDrinMixture, null))PlayerStateDrinkMixtureEvents.OnDrinMixture.Invoke(this);
         }
     }
 

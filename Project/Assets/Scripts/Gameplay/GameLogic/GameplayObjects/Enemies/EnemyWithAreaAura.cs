@@ -9,7 +9,9 @@ public class EnemyWithAreaAura : EnemyNormal
     protected List<Status> statuses = new List<Status>();
     protected MapPosition[] areaOfEffect;
 
-    public EnemyWithAreaAura(Sprite gameplayImage, int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier, List<Status> statuses, MapPosition[] areaOfEffect) : base(gameplayImage, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier) 
+    public EnemyWithAreaAura(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL, int attributeHealthValue, int attributeMovementSpeedValue, 
+        int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier, List<Status> statuses, MapPosition[] areaOfEffect) 
+        : base(gameplayImage, descriptionEN, descriptionPL, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier) 
     {
         this.statuses = statuses;
         this.areaOfEffect = areaOfEffect;

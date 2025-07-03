@@ -39,9 +39,9 @@ public class PlayerInventoryUIController : MonoBehaviour
 
     private void CreateInventoryUI()
     {
-        CreateCompartement(ItemType.BigScroll, PlayerInventoryController.Instance.InventoryBigScrolls);
-        CreateCompartement(ItemType.Mixture, PlayerInventoryController.Instance.InventoryMixtures);
-        CreateCompartement(ItemType.SmallScrolls, PlayerInventoryController.Instance.InventorySmallScrolls);
+        CreateCompartement(ItemType.BigScroll, PlayerInventoryController.Instance.PlayerInventory.InventoryBigScrolls);
+        CreateCompartement(ItemType.Mixture, PlayerInventoryController.Instance.PlayerInventory.InventoryMixtures);
+        CreateCompartement(ItemType.SmallScrolls, PlayerInventoryController.Instance.PlayerInventory.InventorySmallScrolls);
     }
 
     private void CreateCompartement(ItemType itemType, BaseItem[] itemsCompartement)
@@ -52,9 +52,9 @@ public class PlayerInventoryUIController : MonoBehaviour
 
     public void UpdateInventory()
     {
-        UpdateCompartement(ItemType.BigScroll, PlayerInventoryController.Instance.InventoryBigScrolls);
-        UpdateCompartement(ItemType.Mixture, PlayerInventoryController.Instance.InventoryMixtures);
-        UpdateCompartement(ItemType.SmallScrolls, PlayerInventoryController.Instance.InventorySmallScrolls);
+        UpdateCompartement(ItemType.BigScroll, PlayerInventoryController.Instance.PlayerInventory.InventoryBigScrolls);
+        UpdateCompartement(ItemType.Mixture, PlayerInventoryController.Instance.PlayerInventory.InventoryMixtures);
+        UpdateCompartement(ItemType.SmallScrolls, PlayerInventoryController.Instance.PlayerInventory.InventorySmallScrolls);
     }
 
     private void UpdateCompartement(ItemType itemType, BaseItem[] items)

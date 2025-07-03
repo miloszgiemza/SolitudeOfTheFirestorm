@@ -57,6 +57,7 @@ public abstract class BaseAttribute
     public void AddStatus(Status newStatus)
     {
         statuses.Add(new Status(newStatus.Attribute, newStatus.Duration, newStatus.Modifier));
+        
     }
 
     public int ReturnAttributeValue()

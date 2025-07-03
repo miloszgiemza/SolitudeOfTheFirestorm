@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class BaseSpell : BaseGameDatabaseItem
 {
+    public override DatabaseItemType DatabaseItemType => DatabaseItemType.Spell;
+
     public string SpellName => spellName;
     public Sprite SpellIcon => spellIcon;
     public VFXID SpellVFX => spellVFX;

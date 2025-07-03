@@ -30,7 +30,7 @@ public class StateDrinkMixture : BasePlayerState
 
         player.AcquireStatuses(mixture.Statuses);
 
-        PlayerInventoryController.Instance.DestroyItemAndNullCurrentItemOnSuccesfullUse();
+        PlayerInventoryController.Instance.PlayerInventory.DestroyItemAndNullCurrentItemOnSuccesfullUse();
 
         player.SwitchState(PlayerState.Idle);
     }

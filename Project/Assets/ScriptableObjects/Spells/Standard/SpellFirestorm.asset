@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: SpellFirestorm
   m_EditorClassIdentifier: 
   iDGameDatabase: 582e9a06-9764-4bed-9194-a918485ef700
+  descriptionEN:
+  - title: Test
+    text: Test
+  descriptionPL:
+  - title: Test
+    text: Test
   spellName: Fire Storm
   spellIcon: {fileID: 21300000, guid: 0a92586be7900e5498e01206b55e33ae, type: 3}
   spellVFX: 0

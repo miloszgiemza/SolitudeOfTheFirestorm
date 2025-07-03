@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7196291bb33a3a40b564aa191b5b4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockedLevelsNumber: 1
+  unlockedLevelsNumber: 4
   levelsPresets:
   - {fileID: 11400000, guid: e87ae802bb8b50e4ab425c6be83da559, type: 2}
   - {fileID: 11400000, guid: 40519b6b0f677994e860cf98225466b6, type: 2}

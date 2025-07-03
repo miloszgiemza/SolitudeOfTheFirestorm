@@ -11,13 +11,22 @@ public enum ScenesIdentifiers
     Gameplay
 }
 
+public enum GameLanguage
+{
+    ENG,
+    PL
+}
+
 public class GameController : MonoBehaviour
 {
     public static GameController Instance => instance;
 
     private static GameController instance;
 
+    public GameLanguage GameLanguage => gameLanguage;
     public LevelEnemiesRandomisedPreset CurrenLevelPresetToLoad => currenLevelPresetToLoad;
+
+    private GameLanguage gameLanguage => GameLanguage.ENG;
 
     private LevelEnemiesRandomisedPreset currenLevelPresetToLoad;
 

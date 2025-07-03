@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2360483552466945862, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_text
+      value: Wizard's Workshop
+      objectReference: {fileID: 0}
     - target: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
       propertyPath: m_Name
       value: BaseButtonMainMenu Variant (1)
@@ -225,6 +229,58 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 105049570140037303, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
   m_PrefabInstance: {fileID: 248802257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &277994895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277994896}
+  - component: {fileID: 277994897}
+  m_Layer: 0
+  m_Name: PlayerPersistentDataController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &277994896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277994895}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1193283980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &277994897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277994895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb02a55bc0ce1341a30c8ce1ede0144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPersistentDataLoadedAndUnpacked:
+    unlockedLevels: 0
+    playerUnlockedSpells: []
+    playerEquipedSpells: []
+    playerInventory:
+      inventoryBigScrolls: []
+      inventoryMixtures: []
+      inventorySmallScrolls: []
 --- !u!1 &298953277
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +645,39 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &734302875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 734302876}
+  m_Layer: 0
+  m_Name: SaveAndDataConversionSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &734302876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734302875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 745495595}
+  - {fileID: 750215697}
+  m_Father: {fileID: 1193283980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745495594
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,12 +703,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745495594}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1193283980}
+  m_Father: {fileID: 734302876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &745495596
 MonoBehaviour:
@@ -646,6 +735,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8541107b5f1283f448c672ebf80b4388, type: 2}
     - {fileID: 11400000, guid: be4ecaaea2bf5e14a88cd4d4a828c246, type: 2}
     - {fileID: 11400000, guid: 4468c1cfeecafcd4fad2da2f8e4cacd8, type: 2}
+    - {fileID: 11400000, guid: a6e94adc62036414c84b41d3635ab606, type: 2}
+    - {fileID: 11400000, guid: 9f5a265e25591dc4a9677573cf08d172, type: 2}
+    - {fileID: 11400000, guid: 352276aca634f5c4382c371613db0ae2, type: 2}
   databaseInventory:
     bigScrollsAll:
     - {fileID: 11400000, guid: 4d873d31e8a13ba409b6ce139eaffcee, type: 2}
@@ -665,7 +757,7 @@ GameObject:
   - component: {fileID: 750215697}
   - component: {fileID: 750215698}
   m_Layer: 0
-  m_Name: PlayerProgression
+  m_Name: SavesController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,12 +771,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750215696}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1193283980}
+  m_Father: {fileID: 734302876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &750215698
 MonoBehaviour:
@@ -695,12 +787,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 750215696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf738e915400c346a94a91a3f79a9c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bac455aba625c84788ea728a47dec5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerProgression:
     unlockedSpells:
-    - 
+    - 8ddb4705-2bfa-42bb-ae81-81966ae6086b
+    equipedSpells:
+    - 8ddb4705-2bfa-42bb-ae81-81966ae6086b
+    playerInventoryState:
+      compartmentsSize: 3
+      compartmentBigScrolls:
+      - be8d38a0-09f7-4c66-9046-9f4694e1b2c7
+      compartmentMixtures:
+      - 66eb18dd-cc70-47a9-945a-4de5685ba7bd
+      compartementSmallScrolls:
+      - 02806df8-edcf-4d99-814c-0a23ff93c1af
 --- !u!1 &760393842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,6 +1113,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd2ab7fbc44678b4288dfb40daedde5f, type: 2}
   - {fileID: 11400000, guid: 8541107b5f1283f448c672ebf80b4388, type: 2}
   - {fileID: 11400000, guid: be4ecaaea2bf5e14a88cd4d4a828c246, type: 2}
+  - {fileID: 11400000, guid: a6e94adc62036414c84b41d3635ab606, type: 2}
+  - {fileID: 11400000, guid: 9f5a265e25591dc4a9677573cf08d172, type: 2}
+  - {fileID: 11400000, guid: 352276aca634f5c4382c371613db0ae2, type: 2}
   spellsTier2: []
   spellsTier3: []
 --- !u!1 &1193283979
@@ -1043,9 +1148,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 750215697}
   - {fileID: 1166306373}
-  - {fileID: 745495595}
+  - {fileID: 277994896}
+  - {fileID: 734302876}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1193283981

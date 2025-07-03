@@ -8,7 +8,7 @@ public class CollectableItem : GameplayObject
 
     protected BaseItem item;
 
-    public CollectableItem(Sprite gameplayImage, Tile tile, BaseItem item) : base(gameplayImage)
+    public CollectableItem(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL, Tile tile, BaseItem item) : base(gameplayImage, descriptionEN, descriptionPL)
     {
         //musi dodawaæ siebie kafelkowi i sobie kafelek
         this.tile = tile;
@@ -29,7 +29,7 @@ public class CollectableItem : GameplayObject
 
     public override void ReactToSpell(BaseSpell spell,  int spellDamage, int modifierDamage, int modifierEffectLength)
     {
-        PlayerInventoryController.Instance.ReceiveItemAndTryToAcquireIt(item);
+        PlayerInventoryController.Instance.PlayerInventory.ReceiveItemAndTryToAcquireIt(item);
         tile.Clear(this);
         CollectableItemsDisplayController.Instance.Display(Map.Instance.MapData);
     }
@@ -40,5 +40,10 @@ public class CollectableItem : GameplayObject
 
     public override void PerformActionAtEndOfPlayerTurn()
     {
+    }
+
+    public override void PerformEnemyTurnAction(int enemyMaxSpeed)
+    {
+        throw new System.NotImplementedException();
     }
 }

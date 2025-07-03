@@ -26,7 +26,7 @@ public class LootSpawner : ScriptableObject
         {
             if (GetRandomIntFromRange.Get(0, 100) <= spawnableItems[i].ProbabilityOfDrop)
             {
-                new CollectableItem(spawnableItems[i].Item.IconCollectable, tile, spawnableItems[i].Item);
+                new CollectableItem(spawnableItems[i].Item.IconCollectable, spawnableItems[i].Item.DescriptionEN, spawnableItems[i].Item.DescriptionPL, tile, spawnableItems[i].Item);
             }
         }
     }

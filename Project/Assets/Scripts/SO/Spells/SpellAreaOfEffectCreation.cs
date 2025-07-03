@@ -11,6 +11,9 @@ public class SpellAreaOfEffectCreation : BaseSpellAreaOfEffect
     [SerializeField] protected float movementCostReal = 0f;
     [SerializeField] protected float movementCostHeuristic = 0f;
 
+    [SerializeField] protected TooltipParagraph[] descriptionENObstacle;
+    [SerializeField] protected TooltipParagraph[] descriptionPLObstacle;
+
     public override List<Tile> ReturnAffectedTiles(Tile[,] mapData, Vector2 cursorPos, int modifierRange)
     {
         List<Tile> affectedTiles = new List<Tile>();
@@ -80,7 +83,7 @@ public class SpellAreaOfEffectCreation : BaseSpellAreaOfEffect
             {
                 if (affectedTiles[currentTile].CheckIfPossibleToCreateObbstacle())
                 {
-                    Obstacle newObstacle = new Obstacle(obstacleImage, walkable, damage, duration + modifierEffectLength, statuses, affectedTiles[currentTile], movementCostReal, movementCostHeuristic);
+                    Obstacle newObstacle = new Obstacle(obstacleImage, descriptionENObstacle, descriptionPLObstacle, walkable, damage, duration + modifierEffectLength, statuses, affectedTiles[currentTile], movementCostReal, movementCostHeuristic);
                     ObstaclesController.Instance.AddSpawnedObstacle(newObstacle);
                     affectedTiles[currentTile].UpdateTile(newObstacle);
                 }

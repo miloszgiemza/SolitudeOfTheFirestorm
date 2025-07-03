@@ -15,11 +15,17 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: dc4fae6e23324f74cb46575d46a95e83, type: 3}
   walkable: 0
   damage: 1
+  descriptionEN:
+  - title: Ratman
+    text: Base mob. Slow, weak and stupid. And numerous.
+  descriptionPL:
+  - title: "Szczurocz\u0142ek"
+    text: "Podstawowy mob. Wolny s\u0142aby, g\u0142upi i liczny."
   enemyBehaviourType: 1
   speed: 1
   health: 1
   notImmobilized: 1
-  lootSpawner: {fileID: 11400000, guid: 40b42cfc322f0234c83e6d156a01593d, type: 2}
+  lootSpawner: {fileID: 11400000, guid: 9dd74c4946fdc374ba1c627fc61f8930, type: 2}
   defence: 0
   tier: 0
   statuses: []

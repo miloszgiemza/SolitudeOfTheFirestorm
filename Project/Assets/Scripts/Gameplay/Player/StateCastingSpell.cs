@@ -8,6 +8,7 @@ public class StateCastingSpell : BasePlayerState
 
     public override void StartState(Player player)
     {
+        TooltipsController.Instance.TooltipWindowController.ClearTooltipWindowBeforeClosing();
     }
 
     public override void EndState(Player player)
@@ -35,15 +36,18 @@ public class StateCastingSpell : BasePlayerState
 
     private void TryCastSpell(Vector2 cursorPos, int modifierDamage, int modifierRange, int modifierEffectLength)
     {
-        if (SpellsController.Instance.CurrentSpell.TryCast(Map.Instance.MapData, InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(), 
-            modifierDamage, modifierRange, modifierEffectLength))
+        if(!CheckIfObscuredByUI.Instance.CheckIfObscured())
         {
-            WrapUpAfterSuccesfullSpell(Map.Instance.MapData, InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(), 
-                SpellsController.Instance.CurrentSpell, modifierRange);
-        }
-        else
-        {
-            EndCasting();
+            if (SpellsController.Instance.CurrentSpell.TryCast(Map.Instance.MapData, InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(),
+    modifierDamage, modifierRange, modifierEffectLength))
+            {
+                WrapUpAfterSuccesfullSpell(Map.Instance.MapData, InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(),
+                    SpellsController.Instance.CurrentSpell, modifierRange);
+            }
+            else
+            {
+                EndCasting();
+            }
         }
     }
 

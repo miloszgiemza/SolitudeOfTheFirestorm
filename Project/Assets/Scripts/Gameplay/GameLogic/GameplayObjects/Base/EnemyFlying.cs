@@ -6,7 +6,9 @@ public class EnemyFlying : BaseEnemy
 {
     public override GameplayObjectType GameplayObjectType => GameplayObjectType.EnemyFlying;
 
-    public EnemyFlying(Sprite gameplayImage, int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier) : base(gameplayImage, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier)
+    public EnemyFlying(Sprite gameplayImage, TooltipParagraph[] descriptionEN, TooltipParagraph[] descriptionPL,
+        int attributeHealthValue, int attributeMovementSpeedValue, int attributeDamageValue, int notImmobilised, LootSpawner lootSpawner, int defence, EnemyTier tier) 
+        : base(gameplayImage, descriptionEN, descriptionPL, attributeHealthValue, attributeMovementSpeedValue, attributeDamageValue, notImmobilised, lootSpawner, defence, tier)
     {
     }
 
@@ -28,5 +30,10 @@ public class EnemyFlying : BaseEnemy
 
     public override void PerformActionAtEndOfPlayerTurn()
     {
+    }
+
+    public override void PerformEnemyTurnAction(int enemyMaxSpeed)
+    {
+        throw new System.NotImplementedException();
     }
 }

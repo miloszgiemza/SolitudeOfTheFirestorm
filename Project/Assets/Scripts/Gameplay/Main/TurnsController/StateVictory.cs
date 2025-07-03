@@ -13,8 +13,7 @@ public class StateVictory : BaseGameState
 
     public override void StartTurn(GameplayController game)
     {
-        LevelsPresetsController.Instance.UpdateUnlockedLevels(LevelsPresetsController.Instance.UnlockedLevelsNumber+1);
-        PlayerProgressionController.Instance.SaveProgressionState(SpellsController.Instance.AvaliableSpells, PlayerInventoryController.Instance, LevelsPresetsController.Instance.UnlockedLevelsNumber);
+        if(GameController.Instance.CurrenLevelPresetToLoad.LevelNumber > PlayerPersistentDataLoadedAndUnpackedController.Instance.PlayerPersistentData.UnlockedLevels) PlayerPersistentDataLoadedAndUnpackedController.Instance.UpdateUnlockedLevels(GameController.Instance.CurrenLevelPresetToLoad.LevelNumber);
 
         spellsFromWhichToChooseSpellUnlock = LevelRewardsController.Instance.DrawSpellsAvaliableToChooseForUnlock(2, RewardsAvaliableForFinishingLevels.Instance.SpellsTier1, 
             RewardsAvaliableForFinishingLevels.Instance.SpellsTier2, RewardsAvaliableForFinishingLevels.Instance.SpellsTier3, GameController.Instance.CurrenLevelPresetToLoad.Tier1SpellChance,
@@ -40,7 +39,7 @@ public class StateVictory : BaseGameState
 
     protected void UnlockSpellMethod(int spellToUnlock)
     {
-        PlayerProgressionController.Instance.UnlockSpellAndUpdatePlayerProgression(spellsFromWhichToChooseSpellUnlock[spellToUnlock]);
+        PlayerPersistentDataLoadedAndUnpackedController.Instance.UnlockSpell(spellsFromWhichToChooseSpellUnlock[spellToUnlock]);
         GameController.Instance.LoadMainMenuScene();
     }
 }

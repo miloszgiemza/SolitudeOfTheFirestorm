@@ -77,15 +77,18 @@ public class LevelLoader : MonoBehaviour
         switch(enemyType.EnemyBehaviourType)
         {
             case EnemyBahaviourType.EnemyJustGoingForward:
-                newEnemy = new EnemyJustGoingForward(enemyType.Image, enemyType.Health, enemyType.Speed, enemyType.Damage, enemyType.NotImmobilized, enemyType.LootSpawner, enemyType.Defence, enemyType.Tier);
+                newEnemy = new EnemyJustGoingForward(enemyType.Image, enemyType.DescriptionEN, enemyType.DescriptionPL, enemyType.Health, enemyType.Speed, enemyType.Damage, 
+                    enemyType.NotImmobilized, enemyType.LootSpawner, enemyType.Defence, enemyType.Tier);
                 break;
 
             case EnemyBahaviourType.EnemyBypassingObstaclesAndAvoidingDangersMovementAllDirections:
-                newEnemy = new EnemyBypassingObstaclesAndAvoidingDangersMovementAllDirections(enemyType.Image, enemyType.Health, enemyType.Speed, enemyType.Damage, enemyType.NotImmobilized, enemyType.LootSpawner, enemyType.Defence, enemyType.Tier);
+                newEnemy = new EnemyBypassingObstaclesAndAvoidingDangersMovementAllDirections(enemyType.Image, enemyType.DescriptionEN, enemyType.DescriptionPL,
+                    enemyType.Health, enemyType.Speed, enemyType.Damage, enemyType.NotImmobilized, enemyType.LootSpawner, enemyType.Defence, enemyType.Tier);
                 break;
 
             case EnemyBahaviourType.EnemyAreaAura:
-                newEnemy = new EnemyWithAreaAura(enemyType.Image, enemyType.Health, enemyType.Speed, enemyType.Damage, enemyType.NotImmobilized, enemyType.LootSpawner, enemyType.Defence, enemyType.Tier, enemyType.Statuses, enemyType.AreaOfEffect);
+                newEnemy = new EnemyWithAreaAura(enemyType.Image, enemyType.DescriptionEN, enemyType.DescriptionPL, enemyType.Health, enemyType.Speed, enemyType.Damage, 
+                    enemyType.NotImmobilized, enemyType.LootSpawner, enemyType.Defence, enemyType.Tier, enemyType.Statuses, enemyType.AreaOfEffect);
                 break;
         }
 

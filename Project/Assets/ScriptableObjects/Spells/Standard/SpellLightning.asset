@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3221852dee163f84c83715a847429dd3, type: 3}
   m_Name: SpellLightning
   m_EditorClassIdentifier: 
-  iDGameDatabase: ef110c03-2de0-41d9-8263-962d3f0b4520
+  iDGameDatabase: 975d148b-f595-452b-a658-55946fd86588
+  descriptionEN:
+  - title: Test
+    text: Test
+  descriptionPL:
+  - title: Test
+    text: Test
   spellName: Lightning
   spellIcon: {fileID: 21300000, guid: 6fac2b088e76d54499adc487f7a87d92, type: 3}
   spellVFX: 0
@@ -24,11 +30,15 @@ MonoBehaviour:
       y: 0
     damage: 1
   - position:
-      x: 0
+      x: 1
       y: 1
     damage: 1
   - position:
       x: 0
       y: 2
+    damage: 1
+  - position:
+      x: 1
+      y: 3
     damage: 1
   rangeY: 10

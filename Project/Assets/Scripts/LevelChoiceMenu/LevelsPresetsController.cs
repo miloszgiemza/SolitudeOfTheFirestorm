@@ -10,13 +10,10 @@ namespace LevelChoiceScene
         private static LevelsPresetsController instance;
 
         public int UnlockedLevelsNumber => unlockedLevelsNumber;
-        public LevelEnemiesRandomisedPreset[] UnlockedLevels => unlockedLevels;
 
         [SerializeField] private int unlockedLevelsNumber = 1;
 
         [SerializeField] private LevelEnemiesRandomisedPreset[] levelsPresets;
-
-        private LevelEnemiesRandomisedPreset[] unlockedLevels;
 
         private void Awake()
         {
@@ -28,38 +25,12 @@ namespace LevelChoiceScene
             {
                 instance = this;
                 DontDestroyOnLoad(this);
-
-                TryLoadProgressionAndInitialise();
             }
         }
 
-        private void TryLoadProgressionAndInitialise()
+        public LevelEnemiesRandomisedPreset ReturnLevelPreset(int presetNumber)
         {
-            if(SaveLoadController.CheckIfSaveFileExists())unlockedLevelsNumber = PlayerProgressionController.Instance.PlayerProgression.UnlockedLevelsNumber;
-
-            unlockedLevelsNumber = Mathf.Clamp(unlockedLevelsNumber, 1, levelsPresets.Length);
-            unlockedLevels = new LevelEnemiesRandomisedPreset[unlockedLevelsNumber];
-
-            for(int i=0; i < unlockedLevelsNumber && i < levelsPresets.Length; i++)
-            {
-                unlockedLevels[i] = levelsPresets[i];
-            }
-        }
-
-        public void UpdateUnlockedLevels(int currentUnlockedLevelsNumber)
-        {
-            unlockedLevelsNumber = Mathf.Clamp(currentUnlockedLevelsNumber, 1, levelsPresets.Length);
-            unlockedLevels = new LevelEnemiesRandomisedPreset[unlockedLevelsNumber];
-
-            for (int i = 0; i < unlockedLevelsNumber && i < levelsPresets.Length; i++)
-            {
-                unlockedLevels[i] = levelsPresets[i];
-            }
-        }
-
-        public LevelEnemiesRandomisedPreset ReturnUnlockedLevelPreset(int presetNumber)
-        {
-            return unlockedLevels[presetNumber];
+            return levelsPresets[presetNumber];
         }
     }
 }

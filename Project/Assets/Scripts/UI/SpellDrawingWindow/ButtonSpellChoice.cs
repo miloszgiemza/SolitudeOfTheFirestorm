@@ -6,7 +6,7 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
-public class ButtonSpellChoice : BaseButton
+public class ButtonSpellChoice : BaseButton, IReturnObjectDataForTooltip
 {
     private Image image;
     private TextMeshProUGUI textUI;
@@ -51,5 +51,10 @@ public class ButtonSpellChoice : BaseButton
         {
             PlayerStateIdleEvents.OnCastSpell.Invoke(spellNumber);
         }
+    }
+
+    public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    {
+        return SpellsController.Instance.AvaliableSpells[spellNumber].ReturnTooltipText(GameController.Instance.GameLanguage);
     }
 }

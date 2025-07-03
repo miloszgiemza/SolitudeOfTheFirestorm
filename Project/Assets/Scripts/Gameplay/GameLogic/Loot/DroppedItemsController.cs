@@ -113,4 +113,9 @@ public class DroppedItemsController : MonoBehaviour
 
         return droppedItemsIcons;
     }
+
+    public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage, int item)
+    {
+        return droppedItems[item].ReturnTooltipText(gameLanguage);
+    }
 }

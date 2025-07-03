@@ -6,13 +6,13 @@ public abstract class BaseTilesHighlighter : MonoBehaviour
 {
     public MapPosition[] HighlightedTiles => highlightedTiles;
 
-    private MapPosition[] highlightedTiles;
+    protected MapPosition[] highlightedTiles;
     bool selectionActive = false;
 
     #region Pooler
-    [SerializeField] private GameObject tileHighlightPrefab;
+    [SerializeField] protected GameObject tileHighlightPrefab;
 
-    private TileHighlight[,] tilesHighlights;
+    protected TileHighlight[,] tilesHighlights;
     #endregion
 
     protected void Awake()
@@ -33,7 +33,7 @@ public abstract class BaseTilesHighlighter : MonoBehaviour
     protected abstract void MakeASingleton();
     protected abstract void UnmakeSingleton();
 
-    private void CreateTilesHighlights(Tile[,] mapData)
+    protected virtual void CreateTilesHighlights(Tile[,] mapData)
     {
         tilesHighlights = new TileHighlight[mapData.GetLength(0), mapData.GetLength(1)];
 
@@ -44,12 +44,14 @@ public abstract class BaseTilesHighlighter : MonoBehaviour
                 tilesHighlights[x, y] =
                     Instantiate(tileHighlightPrefab, GameWorldToMapCastController.Instance.CastMapPosToGameWorld(new MapPosition(x, y)), Quaternion.identity, this.transform).GetComponent<TileHighlight>();
 
+                tilesHighlights[x, y].Construct(x, y);
+
                 tilesHighlights[x, y].gameObject.SetActive(false);
             }
         }
     }
 
-    public void UpdateHighlightedTiles(List<MapPosition> selectedTiles)
+    public virtual void UpdateHighlightedTiles(List<MapPosition> selectedTiles)
     {
         for (int i = 0; i < selectedTiles.Count; i++)
         {

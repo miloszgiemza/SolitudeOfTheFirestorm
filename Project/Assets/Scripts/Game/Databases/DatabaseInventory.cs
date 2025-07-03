@@ -20,7 +20,7 @@ namespace GameDatabase
         {
             for(int i=0; i< itemsArray.Length && itemFound==false; i++)
             {
-                if(String.Equals(itemsArray[i], ID))
+                if(String.Equals(itemsArray[i].IDGameDatabase, ID))
                 {
                     itemFound = true;
                     itemToReturn = itemsArray[i];
