@@ -12,6 +12,7 @@ public class PlayerProgression
     public List<string> UnlockedSpells => unlockedSpells;
     public List<string> EquipedSpells => equipedSpells;
     public PlayerInventoryState PlayerInventoryState => playerInventoryState;
+    public int SpellsPossibleToDiscardNumber => spellsPossibleToDiscardNumber;
 
     #region GameProgressionState
     private int unlockedLevelsNumber = 1;
@@ -21,6 +22,7 @@ public class PlayerProgression
     [SerializeField] private List<string> unlockedSpells = new List<string>();
     [SerializeField] private List<string> equipedSpells = new List<string>();
     [SerializeField] private PlayerInventoryState playerInventoryState;
+    [SerializeField] private int spellsPossibleToDiscardNumber;
     #endregion
 
     public PlayerProgression(PlayerProgression playerProgression)
@@ -29,15 +31,15 @@ public class PlayerProgression
         this.unlockedSpells = playerProgression.unlockedSpells;
         this.equipedSpells = playerProgression.equipedSpells;
         this.playerInventoryState = playerProgression.playerInventoryState;
-
+        this.spellsPossibleToDiscardNumber = playerProgression.SpellsPossibleToDiscardNumber;
     }
 
-    public PlayerProgression(int unlockedLevelsNumber, List<string> unlockedSpells, List<string> equipedSpells, PlayerInventoryState playerInventoryState)
+    public PlayerProgression(int unlockedLevelsNumber, List<string> unlockedSpells, List<string> equipedSpells, PlayerInventoryState playerInventoryState, int spellsPossibleToDiscardNumber)
     {
         this.unlockedLevelsNumber = unlockedLevelsNumber;
         this.unlockedSpells = unlockedSpells;
         this.equipedSpells = equipedSpells;
         this.playerInventoryState = playerInventoryState;
-
+        this.spellsPossibleToDiscardNumber = spellsPossibleToDiscardNumber;
     }
 }

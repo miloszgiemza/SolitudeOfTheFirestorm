@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: SpellFireArrow
   m_EditorClassIdentifier: 
   iDGameDatabase: a29769af-2206-441e-a62f-80db20962f59
+  descriptionEN:
+  - title: Fire Arrow
+    text: 
+  descriptionPL: []
   spellName: Fire Arrow
   spellIcon: {fileID: 21300000, guid: 452d2de164199d24bacb313114868c7a, type: 3}
   spellVFX: 0

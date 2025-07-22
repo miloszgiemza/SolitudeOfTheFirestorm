@@ -23,6 +23,9 @@ public class GameplayController : MonoBehaviour
     public Spawner Spawner => spawner;
     public Player Player => player;
 
+    [SerializeField] private GameObject raycastBlockerScreenSpace;
+    [SerializeField] private GameObject raycastBlockerWorldSpace;
+
     private Spawner spawner;
     private Player player;
 
@@ -104,5 +107,11 @@ public class GameplayController : MonoBehaviour
     {
         yield return new WaitUntil(() => LevelLoader.Instance.Initialised);
         SwitchState(States.LevelIntro);
+    }
+
+    public void DisableRaycastBlockers()
+    {
+        raycastBlockerScreenSpace.SetActive(false);
+        raycastBlockerWorldSpace.SetActive(false);
     }
 }

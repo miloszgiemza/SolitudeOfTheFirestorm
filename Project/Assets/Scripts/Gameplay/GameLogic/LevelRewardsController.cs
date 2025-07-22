@@ -20,28 +20,33 @@ public class LevelRewardsController : MonoBehaviour
         }
     }
 
-    public List<BaseSpell> DrawSpellsAvaliableToChooseForUnlock(int numberOfSpellsToReturn, BaseSpell[] spellsOfTier1, BaseSpell[] spellsOfTier2, BaseSpell[] spellsOfTier3, int tier1Probability, int tier2Probability, int tier3Probability)
+    public List<BaseSpell> DrawSpellsAvaliableToChooseForUnlock(int numberOfSpellsToReturn, List<BaseSpell> spellsAvaliableAsRewards)
     {
-        List<BaseSpell> spellsAvaliableToChooseForUnlock = new List<BaseSpell>();
+        List<BaseSpell> spellsNotYetUnlocked = new List<BaseSpell>();
 
-        List<BaseSpell> poolTier1 = CreateCurrentPoolToDraw(spellsOfTier1);
-        List<BaseSpell> poolTier2 = CreateCurrentPoolToDraw(spellsOfTier2);
-        List<BaseSpell> poolTier3 = CreateCurrentPoolToDraw(spellsOfTier3);
-
-        for(int i = 0; i < numberOfSpellsToReturn; i++)
+        for(int i=0; i < spellsAvaliableAsRewards.Count; i++)
         {
-            BaseSpell drawnSpell = TryDrawSpell(poolTier1, tier1Probability);
-            if(!ReferenceEquals(drawnSpell, null)) spellsAvaliableToChooseForUnlock.Add(drawnSpell);
+            bool spellAlreadyUnlocked = false;
 
-            drawnSpell = TryDrawSpell(poolTier2, tier2Probability);
-            if (!ReferenceEquals(drawnSpell, null)) spellsAvaliableToChooseForUnlock[i] = drawnSpell;
-
-
-            drawnSpell = TryDrawSpell(poolTier3, tier3Probability);
-            if (!ReferenceEquals(drawnSpell, null)) spellsAvaliableToChooseForUnlock[i] = drawnSpell;
+            for (int j=0; j < PlayerPersistentDataLoadedAndUnpackedController.Instance.PlayerPersistentData.PlayerUnlockedSpells.Count; j++)
+            {
+                if(Equals(spellsAvaliableAsRewards[i].IDGameDatabase, 
+                    PlayerPersistentDataLoadedAndUnpackedController.Instance.PlayerPersistentData.PlayerUnlockedSpells[j].IDGameDatabase))
+                {
+                    spellAlreadyUnlocked = true;
+                }
+            }
+            if (!spellAlreadyUnlocked) spellsNotYetUnlocked.Add(spellsAvaliableAsRewards[i]);
         }
 
-        return spellsAvaliableToChooseForUnlock;
+        List<BaseSpell> spellsDrawnedAsRewards = new List<BaseSpell>();
+            
+        for (int i = 0; i < numberOfSpellsToReturn; i++)
+            {
+            spellsDrawnedAsRewards.Add(spellsNotYetUnlocked[GetRandomIntFromRange.Get(0, spellsNotYetUnlocked.Count-1)]);
+            }
+
+        return spellsDrawnedAsRewards;
     }
 
     private List<BaseSpell> CreateCurrentPoolToDraw(BaseSpell[] tierSpells)

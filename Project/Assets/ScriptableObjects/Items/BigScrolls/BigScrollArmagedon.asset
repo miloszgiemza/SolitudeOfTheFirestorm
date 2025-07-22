@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: BigScrollArmagedon
   m_EditorClassIdentifier: 
   iDGameDatabase: be8d38a0-09f7-4c66-9046-9f4694e1b2c7
+  descriptionEN:
+  - title: Armageddon
+    text: The Dark Lord first broke Rivendell Convention by forging The Dark Ring.
+      This is perfectly proportionate and measured response.
+  descriptionPL: []
   icon: {fileID: 21300000, guid: 4c7721be38198b6468d4ae33a4cd4b3c, type: 3}
   iconCollectable: {fileID: 21300000, guid: 4c7721be38198b6468d4ae33a4cd4b3c, type: 3}
   spell: {fileID: 11400000, guid: cd8e1999fb1ce4a41a495e5f5d8b8ab4, type: 2}

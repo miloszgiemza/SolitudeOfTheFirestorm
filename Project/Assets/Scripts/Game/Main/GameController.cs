@@ -8,7 +8,8 @@ public enum ScenesIdentifiers
 {
     MainMenu,
     LevelChoiceMenu,
-    Gameplay
+    Gameplay,
+    WizardsWorkshop
 }
 
 public enum GameLanguage
@@ -25,10 +26,13 @@ public class GameController : MonoBehaviour
 
     public GameLanguage GameLanguage => gameLanguage;
     public LevelEnemiesRandomisedPreset CurrenLevelPresetToLoad => currenLevelPresetToLoad;
+    public int MinPlayerEquipedSpellsNumber => minPlayerEquipedSpellsNumber;
 
     private GameLanguage gameLanguage => GameLanguage.ENG;
 
     private LevelEnemiesRandomisedPreset currenLevelPresetToLoad;
+
+    [SerializeField] private int minPlayerEquipedSpellsNumber = 3;
 
     private void Awake()
     {
@@ -43,10 +47,23 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        int[,] array = { { 1, 2, 3 }, { 4, 5, 6 } };
+        Debug.Log("Array 1/2: " + array[1, 2]);
+    }
+
     public void LoadCurrenLevelPreset(LevelEnemiesRandomisedPreset newLevelPreset)
     {
         currenLevelPresetToLoad = newLevelPreset;
     }
+
+    #region Application
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    #endregion
 
     #region Scenes
     public void LoadMainMenuScene()
@@ -61,6 +78,11 @@ public class GameController : MonoBehaviour
     public void LoadGameplayScene()
     {
         SceneManager.LoadScene(ScenesIdentifiers.Gameplay.ToString());
+    }
+
+    public void LoadWizardsWorkshopScene()
+    {
+        SceneManager.LoadScene(ScenesIdentifiers.WizardsWorkshop.ToString());
     }
     #endregion
 }

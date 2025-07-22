@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveLoadFileController
 {
-    private static string saveFilePath = Application.persistentDataPath + "SaveGame.gd";
+    private static string saveFilePath = Application.persistentDataPath + "/SaveGame.gd";
 
     public static void SaveGame(PlayerProgression playerProgression)
     {

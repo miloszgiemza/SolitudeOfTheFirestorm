@@ -20,7 +20,7 @@ MonoBehaviour:
   - title: Test
     text: Test
   spellName: Thunderbolt
-  spellIcon: {fileID: 21300000, guid: 6fac2b088e76d54499adc487f7a87d92, type: 3}
+  spellIcon: {fileID: 21300000, guid: 40042d80699e041478b41cc0f9bbb1e6, type: 3}
   spellVFX: 0
   damage: 0
   statuses: []

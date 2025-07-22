@@ -19,9 +19,12 @@ public class TooltipWindowController : MonoBehaviour
 
     private void PositionTooltipOnScreen(Vector2 tooltipPosOnScreen)
     {
+        /*
         Vector2 convertedWindowPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(tooltipWIndow, tooltipPosOnScreen, Camera.main, out convertedWindowPos);
         tooltipWIndow.anchoredPosition = convertedWindowPos;
+        */
+        tooltipWIndow.anchoredPosition = new Vector2(0f, 0f);
     }
 
     #region LoadWindow

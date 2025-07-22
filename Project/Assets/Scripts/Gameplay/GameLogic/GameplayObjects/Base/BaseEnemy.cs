@@ -56,4 +56,35 @@ public abstract class BaseEnemy : GameplayObject
     {
         Player.Instance.ReceiveDamage(attributes[AttributeID.Damage].CurrentValue);
     }
+
+    public override TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    {
+        TooltipParagraph[] description = new TooltipParagraph[1];
+        description[0] = new TooltipParagraph();
+
+        string stats = "";
+
+        switch (gameLanguage)
+        {
+            case GameLanguage.ENG:
+                
+                description[0].SetTitle(descriptionEN[0].Title);
+
+
+                foreach(var item in attributes)
+                {
+                    stats = stats + item.Key.ToString() + ": " + item.Value.DefaultValue.ToString() + " (" + item.Value.CurrentValue.ToString() + ")\n";  
+                }
+
+                description[0].SetText(stats + "\n\n" + descriptionEN[0].Text);
+
+                break;
+
+            case GameLanguage.PL:
+                description = descriptionPL;
+                break;
+        }
+
+        return description;
+    }
 }

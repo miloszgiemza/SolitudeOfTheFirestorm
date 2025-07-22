@@ -22,4 +22,43 @@ public class ItemSmallScroll : BaseItem
     {
         SpellsController.Instance.UnEquipTemporarySpell();
     }
+
+    public override TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    {
+        TooltipParagraph[] description = new TooltipParagraph[1];
+        description[0] = new TooltipParagraph();
+
+        switch (gameLanguage)
+        {
+            case GameLanguage.ENG:
+                description[0].SetTitle(descriptionEN[0].Title);
+
+                TooltipParagraph[] spellTooltipText = spell.ReturnTooltipText(gameLanguage);
+                string spellDescriptionWithoutCost = "";
+                bool firstLineSkipped = false;
+
+                for(int i=0; i < spellTooltipText[0].Text.Length; i++)
+                {
+                    if(firstLineSkipped)
+                    {
+                        spellDescriptionWithoutCost += spellTooltipText[0].Text[i];
+                    }
+
+                    else if(spellTooltipText[0].Text[i] == '\n' && !firstLineSkipped)
+                    {
+                        firstLineSkipped = true;
+                        i++;
+                    }
+                }
+
+                description[0].SetText("Cost: SECONDARY ACTION\n\n" + spellDescriptionWithoutCost + descriptionEN[0].Text);
+                break;
+
+            case GameLanguage.PL:
+                description = descriptionPL;
+                break;
+        }
+
+        return description;
+    }
 }

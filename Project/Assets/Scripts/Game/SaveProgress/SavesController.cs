@@ -42,7 +42,7 @@ public class SavesController : MonoBehaviour
         }
     }
 
-    public void SaveProgressionState(int unlockedLevels, List<BaseSpell> unlockedSpells, List<BaseSpell> equipedSpells, PlayerInventory playerInventory)
+    public void SaveProgressionState(int unlockedLevels, List<BaseSpell> unlockedSpells, List<BaseSpell> equipedSpells, PlayerInventory playerInventory, int spellsPossibleToDiscardNumber)
     {
         List<string> unlockedSpellsIDs = new List<string>();
         for(int i=0; i < unlockedSpells.Count; i++)
@@ -59,24 +59,24 @@ public class SavesController : MonoBehaviour
         string[] bigScrolls = new string[playerInventory.InventoryBigScrolls.Length];
         for(int i =0; i < playerInventory.InventoryBigScrolls.Length; i++)
         {
-            bigScrolls[i] = playerInventory.InventoryBigScrolls[i].IDGameDatabase;
+            if(!ReferenceEquals(playerInventory.InventoryBigScrolls[i], null)) bigScrolls[i] = playerInventory.InventoryBigScrolls[i].IDGameDatabase;
         }
 
         string[] mixtures = new string[playerInventory.InventoryMixtures.Length];
         for (int i = 0; i < playerInventory.InventoryMixtures.Length; i++)
         {
-            mixtures[i] = playerInventory.InventoryMixtures[i].IDGameDatabase;
+            if(!ReferenceEquals(playerInventory.InventoryMixtures[i], null))mixtures[i] = playerInventory.InventoryMixtures[i].IDGameDatabase;
         }
 
         string[] smallScrolls = new string[playerInventory.InventorySmallScrolls.Length];
         for (int i = 0; i < playerInventory.InventorySmallScrolls.Length; i++)
         {
-            smallScrolls[i] = playerInventory.InventorySmallScrolls[i].IDGameDatabase;
+            if(!ReferenceEquals(playerInventory.InventorySmallScrolls[i], null))smallScrolls[i] = playerInventory.InventorySmallScrolls[i].IDGameDatabase;
         }
 
         PlayerInventoryState playerInventoryState = new PlayerInventoryState(playerInventory.MaxCapacity, bigScrolls, mixtures, smallScrolls);
 
-        playerProgression = new PlayerProgression(unlockedLevels, unlockedSpellsIDs, equipedSpellsIDs, playerInventoryState);
+        playerProgression = new PlayerProgression(unlockedLevels, unlockedSpellsIDs, equipedSpellsIDs, playerInventoryState, spellsPossibleToDiscardNumber);
 
         SaveLoadFileController.SaveGame(playerProgression);
     }

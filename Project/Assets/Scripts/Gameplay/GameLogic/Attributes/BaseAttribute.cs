@@ -18,6 +18,8 @@ public enum AttributeID
 public abstract class BaseAttribute
 {
     public abstract AttributeID AttributeID { get; }
+
+    public int DefaultValue => defaultValue;
     public int CurrentValue => currentValue;
 
     protected int defaultValue;

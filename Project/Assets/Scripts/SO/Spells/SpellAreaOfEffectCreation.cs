@@ -102,4 +102,68 @@ public class SpellAreaOfEffectCreation : BaseSpellAreaOfEffect
     {
         return 0;
     }
+
+    public override TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    {
+        TooltipParagraph[] description = new TooltipParagraph[1];
+        description[0] = new TooltipParagraph();
+
+        string stats = "";
+
+        switch (gameLanguage)
+        {
+            case GameLanguage.ENG:
+                description[0].SetTitle(descriptionEN[0].Title);
+
+                stats += "Cost: MAIN ACTION\n\n";
+                stats += "Range: " + rangeY.ToString() + "\n\n";
+                stats += "Obstacle size:\n";
+
+                bool[,] shape = ReturnAreaOfEffectShapeForTooltip();
+
+
+                for (int i = 0; i < shape.GetLength(0); i++)
+                {
+                    stats += "\n";
+                    for (int j = 0; j < shape.GetLength(1); j++)
+                    {
+                        if (shape[i, j]) stats += "O";
+                        else stats += " ";
+                    }
+                }
+
+                stats += "\n\n";
+                stats += "Obstacle duration (turns): " + duration.ToString() + "\n\n";
+
+                stats += "Obstacle walkable: " + walkable.ToString() + "\n\n";
+
+                stats += "Obstacle damage: " + damage.ToString() + "\n\n";
+
+                stats += "Statuses applied by obstacle: ";
+
+                if (ReferenceEquals(statuses, null) || statuses.Count < 1)
+                {
+                    stats += "None\n\n";
+                }
+                else
+                {
+                    for (int i = 0; i < statuses.Count; i++)
+                    {
+                        stats += "\n\n";
+                        stats += "Affected attribute: " + statuses[i].Attribute.ToString() + "\n";
+                        stats += "Applied modifier: " + statuses[i].Modifier.ToString() + "\n";
+                        stats += "Duration (turns): " + statuses[i].Duration.ToString() + "\n\n";
+                    }
+                }
+
+                description[0].SetText(stats + "\n\n" + descriptionEN[0].Text);
+                break;
+
+            case GameLanguage.PL:
+                description = descriptionPL;
+                break;
+        }
+
+        return description;
+    }
 }

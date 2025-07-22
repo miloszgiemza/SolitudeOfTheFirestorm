@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: ItemSmallScrollFireArrow
   m_EditorClassIdentifier: 
   iDGameDatabase: 02806df8-edcf-4d99-814c-0a23ff93c1af
+  descriptionEN:
+  - title: Scroll Fire Arrow
+    text: Good for lightning up a pipe or a rat
+  descriptionPL: []
   icon: {fileID: 21300000, guid: 452d2de164199d24bacb313114868c7a, type: 3}
   iconCollectable: {fileID: 21300000, guid: 452d2de164199d24bacb313114868c7a, type: 3}
   spell: {fileID: 11400000, guid: 6b614e82b65ed9b4ab05532265527fc8, type: 2}

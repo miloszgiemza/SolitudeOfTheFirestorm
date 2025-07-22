@@ -6,9 +6,9 @@ public class BaseLevelPreset : ScriptableObject
 {
     public int LevelNumber => levelNumber;
 
-    public int Tier1SpellChance => tier1SpellChance;
-    public int Tier2SpellChance => tier2SpellChance;
-    public int Tier3SpellChance => tier3SpellChance;
+    public List<BaseSpell> SpellsUnlocksAvaliableAsRewards => spellsUnlocksAvaliableAsRewards;
+
+    [SerializeField] private List<BaseSpell> spellsUnlocksAvaliableAsRewards;
 
     [SerializeField] private int levelNumber;
 

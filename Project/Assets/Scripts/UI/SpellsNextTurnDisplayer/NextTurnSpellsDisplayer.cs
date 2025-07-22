@@ -54,7 +54,7 @@ public class NextTurnSpellsDisplayer : MonoBehaviour
     {
         window.SetActive(true);
 
-        UpdateMiniatures(spellsNextTurn, SpellsController.Instance.AvaliableSpells);
+        UpdateMiniatures(spellsNextTurn, SpellsController.Instance.AllAvaliableSpells);
     }
 
     public void Hide()

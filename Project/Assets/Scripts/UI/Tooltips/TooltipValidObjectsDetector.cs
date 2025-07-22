@@ -27,7 +27,7 @@ public class TooltipValidObjectsDetector : MonoBehaviour
 
         foreach(RaycastResult raycastResult in raycastResults)
         {
-            if(!ReferenceEquals(raycastResult.gameObject.GetComponent<IReturnObjectDataForTooltip>(), null))
+            if(!ReferenceEquals(raycastResult.gameObject.GetComponent<IReturnObjectDataForTooltip>(), null) )
             {
                 objectHasTooltipInterface = true;
                 objectDataForTooltip = raycastResult.gameObject.GetComponent<IReturnObjectDataForTooltip>();

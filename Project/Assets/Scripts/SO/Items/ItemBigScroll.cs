@@ -22,4 +22,9 @@ public class ItemBigScroll : BaseItem
     {
         SpellsController.Instance.UnEquipTemporarySpell();
     }
+
+    public override TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    {
+       return spell.ReturnTooltipText(gameLanguage);
+    }
 }

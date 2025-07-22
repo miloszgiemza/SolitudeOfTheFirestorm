@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardsWorkshopManager : MonoBehaviour
+namespace WizardsWorkshop_PlayerProgressionMode
 {
-    private void EquipSpell()
+    public class WizardsWorkshopManager : MonoBehaviour
     {
+        public SpellsManagementController SpellsManagementController => spellsManagementController;
 
+        private SpellsManagementController spellsManagementController;
+
+        private void Awake()
+        {
+            spellsManagementController = GetComponentInChildren<SpellsManagementController>();
+        }
     }
 }

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a093c6b6cae3e418ccc9829d8fe228, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
+  spellsUnlocksAvaliableAsRewards:
+  - {fileID: 11400000, guid: 4468c1cfeecafcd4fad2da2f8e4cacd8, type: 2}
+  - {fileID: 11400000, guid: bd2ab7fbc44678b4288dfb40daedde5f, type: 2}
   levelNumber: 0
   tier1SpellChance: 100
   tier2SpellChance: 0

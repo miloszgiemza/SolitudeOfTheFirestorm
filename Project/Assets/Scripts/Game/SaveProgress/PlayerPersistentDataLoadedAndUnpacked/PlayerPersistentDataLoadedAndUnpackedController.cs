@@ -35,10 +35,10 @@ public class PlayerPersistentDataLoadedAndUnpackedController : MonoBehaviour
     {
         yield return new WaitUntil(() => (SavesController.Instance != null));
         LoadPlayerPersistentData(SavesController.Instance.PlayerProgression.UnlockedLevelsNumber, SavesController.Instance.PlayerProgression.UnlockedSpells, SavesController.Instance.PlayerProgression.EquipedSpells,
-    SavesController.Instance.PlayerProgression.PlayerInventoryState);
+    SavesController.Instance.PlayerProgression.PlayerInventoryState, SavesController.Instance.PlayerProgression.SpellsPossibleToDiscardNumber);
     }
 
-    public void LoadPlayerPersistentData(int unlockedLevels, List<string> unlockedSpellsValue, List<string> equipedSpellsValue, PlayerInventoryState inventoryState)
+    public void LoadPlayerPersistentData(int unlockedLevels, List<string> unlockedSpellsValue, List<string> equipedSpellsValue, PlayerInventoryState inventoryState, int spellsPossibleToDiscardNumber)
     {
         List<BaseSpell> unlockedSpells = new List<BaseSpell>();
 
@@ -75,7 +75,7 @@ public class PlayerPersistentDataLoadedAndUnpackedController : MonoBehaviour
         PlayerInventory playerInventory = new PlayerInventory();
         playerInventory.Initialise(inventoryState.CompartmentsSize, bigScrolls, mixtures, smallScrolls);
 
-        playerPersistentDataLoadedAndUnpacked = new PlayerPersistentDataLoadedAndUnpacked(unlockedLevels, unlockedSpells, equipedSpells, playerInventory);
+        playerPersistentDataLoadedAndUnpacked = new PlayerPersistentDataLoadedAndUnpacked(unlockedLevels, unlockedSpells, equipedSpells, playerInventory, spellsPossibleToDiscardNumber);
     }
 
     public void UnlockSpell(BaseSpell unlockedSpell)
@@ -83,27 +83,30 @@ public class PlayerPersistentDataLoadedAndUnpackedController : MonoBehaviour
         List<BaseSpell> newUnlockedSpellsList = playerPersistentDataLoadedAndUnpacked.PlayerUnlockedSpells;
         newUnlockedSpellsList.Add(unlockedSpell);
 
+        List<BaseSpell> newEquipedSpells = playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells;
+        newEquipedSpells.Add(unlockedSpell);
+
         playerPersistentDataLoadedAndUnpacked.UpdatePlayerPersistentDataLoadedAndUnpacked(playerPersistentDataLoadedAndUnpacked.UnlockedLevels, 
-            newUnlockedSpellsList, playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory);
+            newUnlockedSpellsList, newEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory, playerPersistentDataLoadedAndUnpacked.SpellsPossibleToDiscardNumber);
 
         SavesController.Instance.SaveProgressionState(playerPersistentDataLoadedAndUnpacked.UnlockedLevels, playerPersistentDataLoadedAndUnpacked.PlayerUnlockedSpells,
-          playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory);
+          playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory, playerPersistentDataLoadedAndUnpacked.SpellsPossibleToDiscardNumber);
     }
 
     public void UpdateUnlockedLevels(int unlockedLevels)
     {
         playerPersistentDataLoadedAndUnpacked.UpdatePlayerPersistentDataLoadedAndUnpacked(unlockedLevels, playerPersistentDataLoadedAndUnpacked.PlayerUnlockedSpells, playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells,
-            playerPersistentDataLoadedAndUnpacked.PlayerInventory);
+            playerPersistentDataLoadedAndUnpacked.PlayerInventory, playerPersistentDataLoadedAndUnpacked.SpellsPossibleToDiscardNumber);
 
         SavesController.Instance.SaveProgressionState(playerPersistentDataLoadedAndUnpacked.UnlockedLevels, playerPersistentDataLoadedAndUnpacked.PlayerUnlockedSpells,
-            playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory);
+            playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory, playerPersistentDataLoadedAndUnpacked.SpellsPossibleToDiscardNumber);
     }
 
-    public void UpdatePlayerPersistentData(int unlockedLevels, List<BaseSpell> unlockedSpellsValue, List<BaseSpell> equipedSpellsValue, PlayerInventory playerInventory)
+    public void UpdatePlayerPersistentData(int unlockedLevels, List<BaseSpell> unlockedSpellsValue, List<BaseSpell> equipedSpellsValue, PlayerInventory playerInventory, int spellsPossibleToDiscardNumber)
     {
-        playerPersistentDataLoadedAndUnpacked = new PlayerPersistentDataLoadedAndUnpacked(unlockedLevels, unlockedSpellsValue, equipedSpellsValue, playerInventory);
+        playerPersistentDataLoadedAndUnpacked = new PlayerPersistentDataLoadedAndUnpacked(unlockedLevels, unlockedSpellsValue, equipedSpellsValue, playerInventory, spellsPossibleToDiscardNumber);
 
         SavesController.Instance.SaveProgressionState(playerPersistentDataLoadedAndUnpacked.UnlockedLevels, playerPersistentDataLoadedAndUnpacked.PlayerUnlockedSpells,
-            playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory);
+            playerPersistentDataLoadedAndUnpacked.PlayerEquipedSpells, playerPersistentDataLoadedAndUnpacked.PlayerInventory, playerPersistentDataLoadedAndUnpacked.SpellsPossibleToDiscardNumber);
     }
 }

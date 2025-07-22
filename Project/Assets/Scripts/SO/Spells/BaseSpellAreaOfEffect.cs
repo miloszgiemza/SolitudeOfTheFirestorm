@@ -69,4 +69,49 @@ public abstract class BaseSpellAreaOfEffect : BaseSpell
 
         return invertedAreaOfEffect;
     }
+    
+    
+    public bool[,] ReturnAreaOfEffectShapeForTooltip()
+    {
+        bool[,] shape = new bool[0,0];
+
+        int maxPointY = int.MinValue;
+        int minPointY = int.MaxValue;
+        int maxPointX = int.MinValue;
+        int minPointX = int.MaxValue;
+
+        for(int i = 0; i < areaOfEffect.Length; i++)
+        {
+            if (areaOfEffect[i].Position.Y > maxPointY) maxPointY = areaOfEffect[i].Position.Y;
+            if (areaOfEffect[i].Position.Y < minPointY)
+            {
+                minPointY = areaOfEffect[i].Position.Y;
+            }
+            if (areaOfEffect[i].Position.X > maxPointX) maxPointX = areaOfEffect[i].Position.X;
+            if (areaOfEffect[i].Position.X < minPointX)
+            {
+                minPointX = areaOfEffect[i].Position.X;
+            }
+        }
+
+        int arrayHeight = Mathf.Abs(maxPointY - minPointY) +1 ;
+        int arrayWidth = Mathf.Abs(maxPointX - minPointX) + 1;
+
+        shape = new bool[arrayHeight, arrayWidth];
+        
+        for(int i=0; i < shape.GetLength(0); i++)
+        {
+            for(int j=0; j < shape.GetLength(1); j++)
+            {
+                shape[i, j] = false;
+            }
+        }
+
+        for(int i=0; i < areaOfEffect.Length; i++)
+        {
+            shape[areaOfEffect[i].Position.Y, areaOfEffect[i].Position.X] = true;
+        }
+        
+        return shape;
+    }
 }

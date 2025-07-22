@@ -107,7 +107,7 @@ public abstract class GameplayObject : IComparable, IReturnObjectDataForTooltip
         else return 1;
     }
 
-    public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    public virtual TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
     {
         TooltipParagraph[] description = new TooltipParagraph[0];
 

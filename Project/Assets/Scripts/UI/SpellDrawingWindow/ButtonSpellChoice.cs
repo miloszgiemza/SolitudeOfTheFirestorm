@@ -55,6 +55,7 @@ public class ButtonSpellChoice : BaseButton, IReturnObjectDataForTooltip
 
     public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
     {
-        return SpellsController.Instance.AvaliableSpells[spellNumber].ReturnTooltipText(GameController.Instance.GameLanguage);
+        Debug.Log("Spell to: " + SpellsController.Instance.SpellsAvaliableForThisTurn[spellNumber].SpellName);
+        return SpellsController.Instance.SpellsAvaliableForThisTurn[spellNumber].ReturnTooltipText(GameController.Instance.GameLanguage);
     }
 }

@@ -12,7 +12,7 @@ public class StateChooseSpellForThisTurn : BasePlayerState
     {
         this.player = player;
         SpellsController.Instance.DrawSpellsForThisAndNextRound();
-        SpellDrawingUIController.Instance.ShowWindowAndUpdateButtons(ChooseSpellForThisTurn, ReDrawSpells, SpellsController.Instance.AvaliableSpells);
+        SpellDrawingUIController.Instance.ShowWindowAndUpdateButtons(ChooseSpellForThisTurn, ReDrawSpells, SpellsController.Instance.AllAvaliableSpells);
         NextTurnSpellsDisplayer.Instance.ShowAndUpdate(SpellsController.Instance.SpellsAvaliableForNextTurn);
 
         player.SwitchState(PlayerState.Idle);
@@ -37,6 +37,6 @@ public class StateChooseSpellForThisTurn : BasePlayerState
     public void ReDrawSpells()
     {
         SpellsController.Instance.ReDrawSpells();
-        SpellDrawingUIController.Instance.ShowWindowAndUpdateButtons(ChooseSpellForThisTurn, ReDrawSpells, SpellsController.Instance.AvaliableSpells);
+        SpellDrawingUIController.Instance.ShowWindowAndUpdateButtons(ChooseSpellForThisTurn, ReDrawSpells, SpellsController.Instance.AllAvaliableSpells);
     }
 }

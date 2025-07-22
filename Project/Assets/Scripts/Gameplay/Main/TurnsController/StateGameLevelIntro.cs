@@ -48,6 +48,7 @@ public class StateGameLevelIntro : BaseGameState
             }
             else
             {
+                game.DisableRaycastBlockers();
                 game.SwitchState(GameplayController.States.Player);
             }
         }

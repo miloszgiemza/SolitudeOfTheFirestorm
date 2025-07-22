@@ -13,7 +13,7 @@ public class SpellsController : MonoBehaviour
 
     public BaseSpell CurrentSpell => currentSpell;
 
-    public List<BaseSpell> AvaliableSpells => avaliableSpells;
+    public List<BaseSpell> AllAvaliableSpells => allAvaliableSpells;
 
     public int SpellsAvaliableAtTheStartOfRound => spellsAvaliableAtTheStartOfRound;
     public List<BaseSpell> SpellsAvaliableForThisTurn => spellsAvaliableForThisTurn;
@@ -25,8 +25,8 @@ public class SpellsController : MonoBehaviour
 
     private BaseSpell currentSpell;
 
-    private List<BaseSpell> avaliableSpells;
-    [SerializeField] private List<BaseSpell> defaultStartingSpells;
+    private List<BaseSpell> allAvaliableSpells;
+    //[SerializeField] private List<BaseSpell> defaultStartingSpells;
 
     private int spellsAvaliableAtTheStartOfRound = 2;
     private List<BaseSpell> spellsAvaliableForThisTurn = new List<BaseSpell>();
@@ -51,7 +51,7 @@ public class SpellsController : MonoBehaviour
 
         LoadUnlockedSpells(SavesController.Instance.PlayerProgression.UnlockedSpells);
         
-        currentSpell = ListRandomElement<BaseSpell>.ReturnRandomElement(avaliableSpells);
+        //currentSpell = ListRandomElement<BaseSpell>.ReturnRandomElement(allAvaliableSpells);
     }
 
     private void OnDestroy()
@@ -62,6 +62,8 @@ public class SpellsController : MonoBehaviour
     #region Initialisation
     private void LoadUnlockedSpells(List<string> unlockedSpellsIDs)
     {
+        allAvaliableSpells = PlayerPersistentDataLoadedAndUnpackedController.Instance.PlayerPersistentData.PlayerEquipedSpells;
+        /*
         if(SaveLoadFileController.CheckIfSaveFileExists())
         {
             avaliableSpells = new List<BaseSpell>();
@@ -80,6 +82,7 @@ public class SpellsController : MonoBehaviour
         {
             avaliableSpells = defaultStartingSpells;
         }
+        */
     }
     #endregion
 
@@ -114,13 +117,13 @@ public class SpellsController : MonoBehaviour
     {
         if(spellsAvaliableForNextTurn.Count <= 0)
         {
-            spellsAvaliableForThisTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, avaliableSpells);
-            spellsAvaliableForNextTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, avaliableSpells);
+            spellsAvaliableForThisTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, allAvaliableSpells);
+            spellsAvaliableForNextTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, allAvaliableSpells);
         }
         else
         {
             spellsAvaliableForThisTurn = spellsAvaliableForNextTurn;
-            spellsAvaliableForNextTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, avaliableSpells);
+            spellsAvaliableForNextTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, allAvaliableSpells);
         }
     }
 
@@ -130,7 +133,7 @@ public class SpellsController : MonoBehaviour
         {
             spellReDrawsPerLevel--;
 
-            spellsAvaliableForThisTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, avaliableSpells);
+            spellsAvaliableForThisTurn = DrawNonDuplicateSpells(spellsAvaliableAtTheStartOfRound, allAvaliableSpells);
         }
     }
 

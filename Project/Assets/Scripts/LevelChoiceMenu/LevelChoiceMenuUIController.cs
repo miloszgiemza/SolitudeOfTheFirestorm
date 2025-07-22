@@ -11,7 +11,7 @@ namespace LevelChoiceScene
 
         private List<ButtonLevelChoicedMap> buttons = new List<ButtonLevelChoicedMap>();
 
-        private Vector2 firstButtonPos = new Vector2(-462f, 39f);
+        private Vector2 firstButtonPos = new Vector2(59.9658f, 842f);
         private float spaceBeetwenButtons = 110f;
 
         private LevelChoiceSceneController levelChoiceSceneController;
@@ -30,13 +30,13 @@ namespace LevelChoiceScene
         {
             Vector2 buttonRectTransform = firstButtonPos;
 
-            for(int i=0; i < unlockedLevelsNumber; i++)
+            for(int i=0; i <= unlockedLevelsNumber; i++)
             {
                 buttons.Add(Instantiate(buttonPrefab, this.transform).GetComponent<ButtonLevelChoicedMap>());
                 buttons[buttons.Count-1].Initialize(i);
                 buttons[buttons.Count-1].SetRectTransform(buttonRectTransform);
 
-                buttonRectTransform = new Vector2(buttonRectTransform.x + spaceBeetwenButtons, buttonRectTransform.y);
+                buttonRectTransform = new Vector2(buttonRectTransform.x, buttonRectTransform.y - spaceBeetwenButtons);
             }
         }
     }

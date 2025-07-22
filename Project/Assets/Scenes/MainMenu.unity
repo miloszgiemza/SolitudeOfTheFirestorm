@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -217,18 +213,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
       propertyPath: m_Name
-      value: BaseButtonMainMenu Variant (1)
+      value: ButtonWizardsWorkshop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248802260}
   m_SourcePrefab: {fileID: 100100000, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
 --- !u!224 &248802258 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 105049570140037303, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
   m_PrefabInstance: {fileID: 248802257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &248802259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+  m_PrefabInstance: {fileID: 248802257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &248802260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248802259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758007756189ed744aaf2a9156ae6484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &277994895
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +321,7 @@ MonoBehaviour:
       inventoryBigScrolls: []
       inventoryMixtures: []
       inventorySmallScrolls: []
+    spellsPossibleToDiscardNumber: 0
 --- !u!1 &298953277
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +509,30 @@ PrefabInstance:
     - target: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
       propertyPath: m_Name
       value: ButtonPlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -793,8 +858,12 @@ MonoBehaviour:
   playerProgression:
     unlockedSpells:
     - 8ddb4705-2bfa-42bb-ae81-81966ae6086b
+    - a9aafeb5-cf90-496b-aa78-5e034f0fb86f
+    - ef110c03-2de0-41d9-8263-962d3f0b4520
     equipedSpells:
     - 8ddb4705-2bfa-42bb-ae81-81966ae6086b
+    - a9aafeb5-cf90-496b-aa78-5e034f0fb86f
+    - ef110c03-2de0-41d9-8263-962d3f0b4520
     playerInventoryState:
       compartmentsSize: 3
       compartmentBigScrolls:
@@ -803,6 +872,7 @@ MonoBehaviour:
       - 66eb18dd-cc70-47a9-945a-4de5685ba7bd
       compartementSmallScrolls:
       - 02806df8-edcf-4d99-814c-0a23ff93c1af
+    spellsPossibleToDiscardNumber: 2
 --- !u!1 &760393842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,20 +1117,68 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2360483552466945862, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_text
+      value: Portal to pathetic, non-magical world
+      objectReference: {fileID: 0}
     - target: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
       propertyPath: m_Name
       value: BaseButtonMainMenu Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653967585508444760, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1126909455}
   m_SourcePrefab: {fileID: 100100000, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
 --- !u!224 &1126909453 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 105049570140037303, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
   m_PrefabInstance: {fileID: 1126909452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1126909454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2828361920860303621, guid: 1ce6d44f73bfb394499a93d6472e61b4, type: 3}
+  m_PrefabInstance: {fileID: 1126909452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1126909455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126909454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa7e82b9e912544aa2d4c919530c493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1166306372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902dc9b6b26f36843ab22df9b89c40b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minPlayerEquipedSpellsNumber: 2
 --- !u!1 &1470285787
 GameObject:
   m_ObjectHideFlags: 0

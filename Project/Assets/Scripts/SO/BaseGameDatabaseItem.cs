@@ -3,21 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IReturnObjectDataForTooltip
-{
-    public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage);
-}
-
-[Serializable]
-public class TooltipParagraph
-{
-    public string Title => title;
-    public string Text => text;
-
-    [SerializeField] string title;
-    [SerializeField] string text;
-}
-
 public enum DatabaseItemType
 {
     Spell,
@@ -38,7 +23,7 @@ public abstract class BaseGameDatabaseItem : ScriptableObject, IReturnObjectData
     [SerializeField] protected TooltipParagraph[] descriptionEN;
     [SerializeField] protected TooltipParagraph[] descriptionPL;
 
-    public TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
+    public virtual TooltipParagraph[] ReturnTooltipText(GameLanguage gameLanguage)
     {
         TooltipParagraph[] description = new TooltipParagraph[0];
 

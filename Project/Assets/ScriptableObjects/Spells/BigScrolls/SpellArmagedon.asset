@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: SpellArmagedon
   m_EditorClassIdentifier: 
   iDGameDatabase: 99329a96-34c0-4458-a561-4f2e2ed252e7
+  descriptionEN:
+  - title: Armageddon
+    text: The Dark Lord broke Rivenvell Convention first by forging The Dark Ring.
+      This is perfectly proportionate and measured response.
+  descriptionPL: []
   spellName: Armagedon
   spellIcon: {fileID: 21300000, guid: 4c7721be38198b6468d4ae33a4cd4b3c, type: 3}
   spellVFX: 0

@@ -5,17 +5,15 @@ using UnityEngine;
 public class TooltipsController : MonoBehaviour
 {
     public static TooltipsController Instance => instance;
-    private static TooltipsController instance;
+    protected static TooltipsController instance;
 
     public TooltipWindowController TooltipWindowController => tooltipWindowController;
 
-    [SerializeField] private TooltipWindowController tooltipWindowController;
-    [SerializeField] private TooltipValidObjectsDetector tooltipValidObjectsDetectorScreenSpace;
-    [SerializeField] private TooltipValidObjectsDetector tooltipValidObjectsDetectorWorldSpace;
+    [SerializeField] protected TooltipWindowController tooltipWindowController;
+    [SerializeField] protected TooltipValidObjectsDetector tooltipValidObjectsDetectorScreenSpace;
+    [SerializeField] protected TooltipValidObjectsDetector tooltipValidObjectsDetectorWorldSpace;
 
-    private Vector2 previousFrameCoursorPos;
-
-    private void Awake()
+    protected void Awake()
     {
         if(ReferenceEquals(TooltipsController.Instance, null))
         {
@@ -27,37 +25,33 @@ public class TooltipsController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         instance = null;
     }
 
-    private void Update()
+    protected void Update()
     {
-        if(!ReferenceEquals(previousFrameCoursorPos, null))
-        {
-            if (InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>().x != previousFrameCoursorPos.x
-                || InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>().y != previousFrameCoursorPos.y)
-            {
-                if (Player.Instance.CurrentState.State == PlayerState.Idle || Player.Instance.CurrentState.State == PlayerState.Deactivated)
-                {
-                    CheckForLogicalObjectOnMapField(InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(), Map.Instance.MapData);
 
-                    CheckForGameObject(InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>());
+            if (InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainAction.IsPressed())
+            {
+                if (ReferenceEquals(Player.Instance, null) || (!ReferenceEquals(Player.Instance, null) && (Player.Instance.CurrentState.State == PlayerState.Idle || Player.Instance.CurrentState.State == PlayerState.Deactivated)) )
+                {
+
+                    if(!CheckIfObscuredByRaycastBLocker.Instance.CheckIfObscured())
+                    {
+                        CheckForGameObject(InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>());
+                        if (!ReferenceEquals(Map.Instance, null)) CheckForLogicalObjectOnMapField(InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>(), Map.Instance.MapData);
+                    }
                 }
             }
-
-            previousFrameCoursorPos = new Vector2(InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>().x,
-                InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>().y);
-        }
         else
         {
-            previousFrameCoursorPos = new Vector2(InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>().x,
-                InputController.Instance.MainInputAssetsWrapper.MobileDevicesMap.MainActionPosition.ReadValue<Vector2>().y);
+            tooltipWindowController.ClearTooltipWindowBeforeClosing();
         }
     }
 
-    private void CheckForLogicalObjectOnMapField(Vector2 cursorPos, Tile[,] mapData)
+    protected  void CheckForLogicalObjectOnMapField(Vector2 cursorPos, Tile[,] mapData)
     {
         if(!CheckIfObscuredByUI.Instance.CheckIfObscured())
         {
@@ -86,15 +80,19 @@ public class TooltipsController : MonoBehaviour
         }
     }
 
-    private void CheckForGameObject(Vector2 cursorPos)
+    protected virtual void CheckForGameObject(Vector2 cursorPos)
     {
         if(tooltipValidObjectsDetectorScreenSpace.CheckForObjects())
         {
             tooltipWindowController.ShowTooltip(tooltipValidObjectsDetectorScreenSpace.ObjectDataForTooltip.ReturnTooltipText(GameController.Instance.GameLanguage), cursorPos);
         }
-        if(tooltipValidObjectsDetectorWorldSpace.CheckForObjects())
+        else if(tooltipValidObjectsDetectorWorldSpace.CheckForObjects())
         {
             tooltipWindowController.ShowTooltip(tooltipValidObjectsDetectorWorldSpace.ObjectDataForTooltip.ReturnTooltipText(GameController.Instance.GameLanguage), cursorPos);
+        }
+        else
+        {
+            tooltipWindowController.ClearTooltipWindowBeforeClosing();
         }
     }
 }
