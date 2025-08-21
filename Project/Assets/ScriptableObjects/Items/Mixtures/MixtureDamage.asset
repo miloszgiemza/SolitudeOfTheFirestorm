@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc256f09b4c292a45b820fc641806252, type: 3}
+  m_Name: MixtureDamage
+  m_EditorClassIdentifier: 
+  iDGameDatabase: 66eb18dd-cc70-47a9-945a-4de5685ba7bd
+  descriptionEN:
+  - title: Mxture of Damege
+    text: +5 damage to spells
+  descriptionPL:
+  - title: "Mikstura Obra\u017Ce\u0144"
+    text: "+5 obra\u017Ce\u0144 od zakl\u0119\u0107"
+  name: Mixture of Damage
+  icon: {fileID: 21300000, guid: c38935c7ebed60b4d90cb76400ba7d10, type: 3}
+  iconCollectable: {fileID: 21300000, guid: c38935c7ebed60b4d90cb76400ba7d10, type: 3}
+  statuses:
+  - attribute: 6
+    duration: 5
+    modifier: 5

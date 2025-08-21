@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe26e6650c9c9043ba4d66d203f0ce6, type: 3}
+  m_Name: EnemyFast
+  m_EditorClassIdentifier: 
+  iDGameDatabase: a076ffe1-7c9c-46d2-ba5b-ccf1284a1582
+  descriptionEN:
+  - title: Enemy Fast
+    text: '-'
+  descriptionPL: []
+  image: {fileID: 21300000, guid: 4792561e17ed7904ca5b32966d9fdc5d, type: 3}
+  walkable: 0
+  damage: 1
+  enemyBehaviourType: 2
+  speed: 3
+  health: 1
+  notImmobilized: 1
+  lootSpawner: {fileID: 11400000, guid: 40b42cfc322f0234c83e6d156a01593d, type: 2}
+  defence: 0
+  tier: 1
+  statuses: []
+  areaOfEffect: []
