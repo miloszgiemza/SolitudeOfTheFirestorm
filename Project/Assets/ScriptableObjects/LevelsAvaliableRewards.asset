@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a7b9ef132a2aa489d21afa73b57141, type: 3}
+  m_Name: LevelsAvaliableRewards
+  m_EditorClassIdentifier: 
+  spellsTier1:
+  - {fileID: 11400000, guid: 6b614e82b65ed9b4ab05532265527fc8, type: 2}
+  spellsTier2:
+  - {fileID: 11400000, guid: 698d488667dd0484e93bb7f46d00978a, type: 2}
+  - {fileID: 11400000, guid: 46bf81a6a5eb0b341b339429c6b8f097, type: 2}
+  spellsTier3:
+  - {fileID: 11400000, guid: bd2ab7fbc44678b4288dfb40daedde5f, type: 2}

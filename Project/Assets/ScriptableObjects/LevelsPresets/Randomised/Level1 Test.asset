@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a093c6b6cae3e418ccc9829d8fe228, type: 3}
+  m_Name: Level1 Test
+  m_EditorClassIdentifier: 
+  spellsUnlocksAvaliableAsRewards:
+  - {fileID: 11400000, guid: bd2ab7fbc44678b4288dfb40daedde5f, type: 2}
+  - {fileID: 11400000, guid: 46bf81a6a5eb0b341b339429c6b8f097, type: 2}
+  levelNumber: 0
+  tier1SpellChance: 100
+  tier2SpellChance: 0
+  tier3SpellChance: 0
+  avaliableEnemiesTypes:
+  - {fileID: 11400000, guid: 040838ed8129bf740ab9d334c7466bc2, type: 2}
+  minHorizotalSpacingBeetwenEnemies: 0
+  maxHorizontalSpacingBeetwenEnemies: 1
+  countOfEnemiesOfTier:
+  - tier: 0
+    count: 1

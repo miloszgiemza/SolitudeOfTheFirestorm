@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04420354b0d15742954c606f8fa895b, type: 3}
+  m_Name: SpellFireBarier
+  m_EditorClassIdentifier: 
+  iDGameDatabase: 232fa58d-e7a0-4731-9ce9-3febf691a8d0
+  descriptionEN:
+  - title: Test
+    text: Test
+  descriptionPL:
+  - title: Test
+    text: Test
+  spellName: Fire Barier
+  spellIcon: {fileID: 21300000, guid: e01c4262a64562946b5b1dce7a7db0e5, type: 3}
+  spellVFX: 0
+  damage: 1
+  statuses:
+  - attribute: 0
+    duration: 1
+    modifier: -1
+  areaOfEffect:
+  - position:
+      x: 0
+      y: 0
+    damage: 1
+  - position:
+      x: 1
+      y: 0
+    damage: 1
+  - position:
+      x: 2
+      y: 0
+    damage: 1
+  rangeY: 10
+  obstacleImage: {fileID: 21300000, guid: 90fe19ec2e441c240b2b6e334ee5784c, type: 3}
+  walkable: 1
+  duration: 2
+  movementCostReal: 0
+  movementCostHeuristic: 50
+  descriptionENObstacle: []
+  descriptionPLObstacle: []

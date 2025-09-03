@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3221852dee163f84c83715a847429dd3, type: 3}
+  m_Name: SpellFireArrow
+  m_EditorClassIdentifier: 
+  iDGameDatabase: a29769af-2206-441e-a62f-80db20962f59
+  descriptionEN:
+  - title: Fire Arrow
+    text: 
+  descriptionPL: []
+  spellName: Fire Arrow
+  spellIcon: {fileID: 21300000, guid: 452d2de164199d24bacb313114868c7a, type: 3}
+  spellVFX: 0
+  damage: 1
+  statuses: []
+  areaOfEffect:
+  - position:
+      x: 0
+      y: 0
+    damage: 1
+  rangeY: 14
